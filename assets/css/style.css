@@ -1122,6 +1122,7 @@ section {
     width: 180px;
     height: 180px;
     border: 8px solid #149ddd;
+    position: relative;
 }
 .main-timeline .content{
     display: table;
