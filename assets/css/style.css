@@ -989,8 +989,18 @@ section {
       } */
       .portfolio-details .table_blur tr:hover td {
         /* text-decoration: underline; */
-        font-weight: bold;
-        color: #149ddd;
+        /* font-weight: bold; */
+        font-weight: Normal;
+        color: #FFFFFF;
+        background: #6495ED;
+      }
+
+      .portfolio-details .table_blur tr:hover a {
+        /* text-decoration: underline; */
+        font-weight: italic;
+        /* font-weight: Normal; */
+        color: #FFFFFF;
+        text-decoration: underline;
       }
 
 
