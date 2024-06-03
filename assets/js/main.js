@@ -35,7 +35,7 @@
   }
 
   /**
-   * Easy on scroll event listener 
+   * Easy on scroll event listener
    */
   const onscroll = (el, listener) => {
     el.addEventListener('scroll', listener)
@@ -190,7 +190,7 @@
   });
 
   /**
-   * Initiate portfolio lightbox 
+   * Initiate portfolio lightbox
    */
   const portfolioLightbox = GLightbox({
     selector: '.portfolio-lightbox'
@@ -242,6 +242,71 @@
     }
   });
 
+
+  /**
+   * Подсчет моего возраста
+   */
+  var now = new Date(); //Текущя дата
+  var today = new Date(now.getFullYear(), now.getMonth(), now.getDate()); //Текущя дата без времени
+  const year = now.getFullYear();
+  var dob = new Date(1998, 4, 29); //Дата рождения
+  var dobnow = new Date(today.getFullYear(), dob.getMonth(), dob.getDate()); //ДР в текущем году
+  var age; //Возраст
+
+  //Возраст = текущий год - год рождения
+  age = today.getFullYear() - dob.getFullYear();
+  //Если ДР в этом году ещё предстоит, то вычитаем из age один год
+  if (today < dobnow) {
+    age = age-1;
+  }
+  document.getElementById("age").innerHTML = age;
+  document.getElementById("year").innerHTML = year;
+  // document.getElementById("year_now").innerHTML = now.getFullYear();
+
+  // const divsWithClass = document.querySelectorAll('div.portfolio-publication');
+  // const divcount = divsWithClass.length;
+  // document.getElementById("divcount").innerHTML = divcount;
+
+
+    /**
+   * Подсчет моего возраста
+   */
+
+   // var count_div = document.querySelectorAll('div.portfolio-publication').length;
+   // document.getElementById("count_div").innerHTML = count_div;
+
+
+  // const scholarly = require('scholarly');
+  //
+  // app.get('/citations', async (req, res) => {
+  //     try {
+  //         const authorName = Aleksandr Lobanov;
+  //         const searchQuery = scholarly.searchAuthor(authorName);
+  //         const author = await searchQuery.next();
+  //         await scholarly.fill(author);
+  //
+  //         const numCitations = author.citedby || 'N/A';
+  //         res.json({ author: authorName, citations: numCitations });
+  //     } catch (error) {
+  //         res.status(500).json({ error: 'Error fetching data' });
+  //     }
+  // });
+  //
+  // app.listen(PORT, () => {
+  //     console.log(`Server is running on http://localhost:${PORT}`);
+  // });
+
+
+  // // Fetch citation data from server
+  // fetch('/citation_data')
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     // Update webpage content with citation data
+  //     // document.getElementById('article_title').innerText = data.article_title;
+  //     document.getElementById('citation_count').innerText = data.citation_count;
+  //   })
+  //   .catch(error => console.error('Error:', error));
+
   /**
    * Animation on scroll
    */
@@ -255,7 +320,7 @@
   });
 
   /**
-   * Initiate Pure Counter 
+   * Initiate Pure Counter
    */
   new PureCounter();
 
