@@ -26,12 +26,13 @@ a:hover {
 
 h1,
 h2,
-h3,
+h3 {},
 h4,
 h5,
 h6 {
   font-family: "Raleway", sans-serif;
 }
+
 
 /*--------------------------------------------------------------
 # Back to top button
@@ -758,6 +759,7 @@ section {
   box-shadow: 0px 0 30px rgba(5, 13, 24, 0.08);
   border: 4px double #00BFFF;
   background: #e4edf9;
+  counter-increment: count_publ ; /* Инкрементирует счётчик*/
 }
 
 .portfolio-details .portfolio-publication img {
@@ -771,6 +773,10 @@ section {
   margin-bottom: 20px;
   padding-bottom: 20px;
   border-bottom: 1px solid #eee;
+}
+
+.portfolio-details .portfolio-publication h3::before {
+  content: "[ " counter(count_publ) " ]"; /* Отображает текущее значение счётчика */
 }
 
 .portfolio-details .portfolio-publication h3 {
