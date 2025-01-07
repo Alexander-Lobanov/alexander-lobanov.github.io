@@ -176,7 +176,11 @@
                 // Установите текстовое содержимое элемента для видимости до анимации
                 countElement.textContent = savedPublicationCount;
               } else {
-                console.error('Element with id "countElement" not found!');
+                // Установите атрибут data-purecounter-end для работы PureCounter.js
+                countElement.setAttribute('data-purecounter-end', 30);
+
+                // Установите текстовое содержимое элемента для видимости до анимации
+                countElement.textContent = 30;
               }
             });
           </script>
