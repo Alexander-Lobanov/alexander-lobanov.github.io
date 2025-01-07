@@ -159,13 +159,13 @@
           <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up">
             <div class="count-box">
               <i class="bi bi-journals"></i>
-              <span id="countElement" data-purecounter-start="0" data-purecounter-duration="1" class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="31" data-purecounter-duration="1" class="purecounter"></span>
               <p><strong>Articles</strong>  prepared for publication in journals/conferences</p>
 
             </div>
           </div>
 
-          <script>
+          <!-- <script>
             document.addEventListener('DOMContentLoaded', () => {
               // Подсчет публикаций в списке
               const savedPublicationCount = localStorage.getItem('publicationCount');
@@ -176,14 +176,10 @@
                 // Установите текстовое содержимое элемента для видимости до анимации
                 countElement.textContent = savedPublicationCount;
               } else {
-                // Установите атрибут data-purecounter-end для работы PureCounter.js
-                countElement.setAttribute('data-purecounter-end', 30);
-
-                // Установите текстовое содержимое элемента для видимости до анимации
-                countElement.textContent = 30;
+                console.error('Element with id "countElement" not found!');
               }
             });
-          </script>
+          </script> -->
 
 
           <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="0">
