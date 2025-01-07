@@ -159,19 +159,37 @@
           <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up">
             <div class="count-box">
               <i class="bi bi-journals"></i>
-              <span data-purecounter-start="0" data-purecounter-end="27" data-purecounter-duration="1" class="purecounter"></span>
+              <span id="countElement" data-purecounter-start="0" data-purecounter-duration="1" class="purecounter"></span>
               <p><strong>Articles</strong>  prepared for publication in journals/conferences</p>
 
             </div>
           </div>
 
+          <script>
+            document.addEventListener('DOMContentLoaded', () => {
+              // Подсчет публикаций в списке
+              const savedPublicationCount = localStorage.getItem('publicationCount');
+              if (countElement) {
+                // Установите атрибут data-purecounter-end для работы PureCounter.js
+                countElement.setAttribute('data-purecounter-end', savedPublicationCount);
+
+                // Установите текстовое содержимое элемента для видимости до анимации
+                countElement.textContent = savedPublicationCount;
+              } else {
+                console.error('Element with id "countElement" not found!');
+              }
+            });
+          </script>
+
+
           <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="0">
             <div class="count-box">
               <i class="bi bi-quote"></i>
-              <span data-purecounter-start="0" data-purecounter-end="182" data-purecounter-duration="1" class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="194" data-purecounter-duration="1" class="purecounter"></span>
               <p><strong>Number of citations</strong>  to prepared articles</p>
             </div>
           </div>
+
 
           <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="0">
             <div class="count-box">
@@ -193,6 +211,8 @@
 
       </div>
     </section><!-- End Facts Section -->
+
+
 
     <!-- ======= Resume Section ======= -->
     <section id="resume" class="resume">

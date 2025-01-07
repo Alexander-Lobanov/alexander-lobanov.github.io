@@ -321,6 +321,30 @@
             <p> </p>
 
             <div class="portfolio-publication">
+              <h3> Asymptotic Analysis of the Ruppert – Polyak Averaging for Stochastic Order Oracle  &nbsp; <a href="https://arxiv.org/abs/2411.15866" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="http://nd.ics.org.ru/upload/iblock/623/nd241219.pdf" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
+              <ul>
+                <li>Vladimir Smirnov, Kristina Kazistova, Ilya Sudakov, Valentin Leplat, Alexander Gasnikov, <strong>Aleksandr Lobanov</strong></li>
+                <li>2024 <span class="label label-journal">Journal Paper</span><a style="color:#000000;" class="fst-italic"> &nbsp;  Russian Journal of Nonlinear Dynamics </a></li>
+              </ul>
+            </div>
+
+            <div class="portfolio-publication">
+              <h3> On Quasi-Convex Smooth Optimization Problems by a Comparison Oracle  &nbsp; <a href="https://arxiv.org/abs/2411.16745" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="http://nd.ics.org.ru/upload/iblock/a69/nd241211.pdf" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
+              <ul>
+                <li>Alexander Gasnikov, Mohammad Alkousa, <strong>Aleksandr Lobanov</strong>, Yuriy Dorn, Fedor Stonyakin, Ilya Kuruzov, Sanjeev Singh</li>
+                <li>2024 <span class="label label-journal">Journal Paper</span><a style="color:#000000;" class="fst-italic"> &nbsp;  Russian Journal of Nonlinear Dynamics </a></li>
+              </ul>
+            </div>
+
+            <div class="portfolio-publication">
+              <h3> Accelerated Zero-Order SGD under High-Order Smoothness and Overparameterized Regime  &nbsp; <a href="https://arxiv.org/abs/2411.13999" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="http://nd.ics.org.ru/upload/iblock/9ff/nd241209.pdf" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
+              <ul>
+                <li>Georgii Bychkov, Darina Dvinskikh, Anastasia Antsiferova, Alexander Gasnikov, <strong>Aleksandr Lobanov</strong></li>
+                <li>2024 <span class="label label-journal">Journal Paper</span><a style="color:#000000;" class="fst-italic"> &nbsp;  Russian Journal of Nonlinear Dynamics </a></li>
+              </ul>
+            </div>
+
+            <div class="portfolio-publication">
               <h3> Improved Iteration Complexity in Black-Box Optimization Problems under Higher Order Smoothness Function Condition  &nbsp; <a href="https://arxiv.org/abs/2407.03507" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="https://arxiv.org/pdf/2407.03507" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
               <ul>
                 <li><strong>Aleksandr Lobanov</strong></li>
@@ -329,10 +353,18 @@
             </div>
 
             <div class="portfolio-publication">
+              <h3> Improved Maximum Noise Level Estimation in Black-Box Optimization Problems   &nbsp; <a href="http://ftp.pdmi.ras.ru/pub/publicat/znsl/v540/p132.pdf" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
+              <ul>
+                <li><strong>Aleksandr Lobanov</strong>, Alexander Gasnikov</li>
+                <li>2024 <span class="label label-journal">Journal Paper</span><a style="color:#000000;" class="fst-italic"> &nbsp;  Journal of Mathematical Sciences </a></li>
+              </ul>
+            </div>
+
+            <div class="portfolio-publication">
               <h3> The Black-Box Optimization Problem: Zero-Order Accelerated Stochastic Method via Kernel Approximation  &nbsp; <a href="https://arxiv.org/abs/2310.02371" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="https://link.springer.com/content/pdf/10.1007/s10957-024-02556-6.pdf" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
               <ul>
                 <li><strong>Aleksandr Lobanov</strong>, Nail Bashirov, Alexander Gasnikov</li>
-                <li>2024 <span class="label label-journal">Journal Paper</span><a style="color:#000000;" class="fst-italic"> &nbsp;  Journal of Optimization Theory and Applications </a></li>
+                <li>2024 <span class="label label-journal">Journal Paper</span><a style="color:#000000;" class="fst-italic"> &nbsp;  Journal of Optimization Theory and Applications (JOTA) </a></li>
               </ul>
             </div>
 
@@ -354,12 +386,29 @@
 
             <p> </p>
 
+
           </div>
 
+
+
           <div class="col-lg-4">
+
             <div class="portfolio-logo">
               <img src="assets/img/portfolio/publication.jpg" alt="">
-              <h3>Publications list</h3>
+              <!-- <h3>Publications list</h3> -->
+              <div class="publication-count">
+                <script>
+                  document.addEventListener('DOMContentLoaded', () => {
+                    const publicationList = document.querySelectorAll('#portfolio-details .portfolio-publication');
+                    const publicationCount = publicationList.length;
+                    // Сохраняем значение в localStorage
+                    localStorage.setItem('publicationCount', publicationCount);
+
+                    // Отображаем на странице
+                    document.querySelector('.publication-count').innerHTML = `<h3>Total Publications: ${publicationCount}</h3>`;
+                  });
+                </script>
+              </div>
               <ul>
                 <li><strong>Date updated</strong>: <script type="text/javascript">document.write(Date());</script></li>
               </ul>
@@ -392,7 +441,7 @@
   <footer id="footer">
     <div class="container">
       <div class="copyright">
-        &copy; 2023-2024 <strong><span>Aleksandr Lobanov</span></strong>
+        &copy; 2023-2025 <strong><span>Aleksandr Lobanov</span></strong>
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
