@@ -250,7 +250,7 @@
   var today = new Date(now.getFullYear(), now.getMonth(), now.getDate()); //Текущя дата без времени
   const year = now.getFullYear();
   var dob = new Date(1998, 4, 29); //Дата рождения
-  var dobnow = new Date(today.getFullYear(), dob.getMonth(), dob.getDate()); //ДР в текущем году
+  var dobnow = new Date(today.getFullYear(), dob.getMonth()-1, dob.getDate()); //ДР в текущем году
   var age; //Возраст
 
   //Возраст = текущий год - год рождения
