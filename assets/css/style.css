@@ -134,7 +134,7 @@ h6 {
   margin-left: 300px;
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 1450px) {
   #header {
     left: -300px;
   }
@@ -833,6 +833,10 @@ section {
     background-color: #b31b1b;
 }
 
+.label-thesis {
+    background-color: Purple;
+}
+
 .label-conference {
     background-color: orange;
 }
@@ -1029,6 +1033,7 @@ section {
     position: absolute;
     top: 0;
     left: 50%;
+    transition: left 0.3s ease; /* Плавное движение */
 }
 .main-timeline .timeline{
     width: 50%;
@@ -1142,7 +1147,7 @@ section {
 }
 .main-timeline .content{
     display: table;
-    padding-right: 10px;
+    padding-right: 40px;
     position: relative;
 }
 .main-timeline .year{
@@ -1261,7 +1266,7 @@ section {
 .main-timeline .timeline:last-child:nth-child(even){
     margin: 0;
 }
-@media only screen and (max-width: 990px){
+@media only screen and (max-width: 1200px){
     .main-timeline:before{ left: 100%; }
     .main-timeline .timeline{
         width: 100%;
@@ -1762,7 +1767,7 @@ section {
   color: #eaebf0;
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 1450px) {
   #footer {
     position: static;
     width: auto;
