@@ -7,6 +7,9 @@ on:
   schedule:
     - cron: "17 3 * * *"
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 permissions:
   contents: write
   pages: write
@@ -30,6 +33,8 @@ jobs:
 
       - name: Update Google Scholar stats
         shell: pwsh
+        env:
+          SCHOLAR_SYNC_OPTIONAL: "true"
         run: ./scripts/update-scholar-stats.ps1
 
       - name: Commit updated Scholar snapshot
