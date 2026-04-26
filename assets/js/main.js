@@ -259,8 +259,17 @@
   if (today < dobnow) {
     age = age-1;
   }
-  document.getElementById("age").innerHTML = age;
-  document.getElementById("year").innerHTML = year;
+  // %%%%26.04.2026%%%%%%% safer text updates
+  const ageElement = document.getElementById("age");
+  if (ageElement) {
+    ageElement.textContent = age;
+  }
+
+  const yearElement = document.getElementById("year");
+  if (yearElement) {
+    yearElement.textContent = year;
+  }
+  // %%%%26.04.2026%%%%%%% safer text updates
   // document.getElementById("year_now").innerHTML = now.getFullYear();
 
   // const divsWithClass = document.querySelectorAll('div.portfolio-publication');
@@ -306,6 +315,24 @@
   //     document.getElementById('citation_count').innerText = data.citation_count;
   //   })
   //   .catch(error => console.error('Error:', error));
+
+  /**
+   * Sync homepage counters with the generated Scholar snapshot
+   */
+  // %%%%26.04.2026%%%%%%% Google Scholar stats sync
+  const scholarStats = window.SCHOLAR_STATS && window.SCHOLAR_STATS.metrics
+  if (scholarStats) {
+    select('[data-scholar-stat]', true).forEach((counter) => {
+      const statKey = counter.getAttribute('data-scholar-stat')
+      const statValue = scholarStats[statKey]
+
+      if (typeof statValue === 'number' && Number.isFinite(statValue)) {
+        counter.setAttribute('data-purecounter-end', String(statValue))
+        counter.textContent = String(statValue)
+      }
+    })
+  }
+  // %%%%26.04.2026%%%%%%% Google Scholar stats sync
 
   /**
    * Animation on scroll
