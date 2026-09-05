@@ -1,0 +1,653 @@
+<!-- %%%%26.04.2026%%%%%%% academic map page generated from Talks data -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Aleksandr Lobanov - Academic Map</title>
+  <meta content="Interactive map of academic talks, conferences, schools and research visits by Aleksandr Lobanov." name="description">
+  <meta content="Aleksandr Lobanov, academic map, talks, conferences, research visits" name="keywords">
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/css/style.css?v=20260905-navigation-map5" rel="stylesheet">
+</head>
+
+<body class="academic-map-page">
+  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+
+  <header id="header">
+    <div class="d-flex flex-column">
+      <div class="profile">
+        <img src="assets/img/profile-img.jpg" alt="Aleksandr Lobanov" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="index.html">Aleksandr Lobanov</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="#" class="telegram" aria-label="Telegram"><i class="bx bxl-telegram"></i></a>
+          <a href="https://github.com/Opt-AVLobanov" class="github" aria-label="GitHub"><i class="bx bxl-github"></i></a>
+          <a href="mailto:lobbsasha98@gmail.com" class="email" aria-label="Email"><i class="bx bx-envelope"></i></a>
+          <a href="https://twitter.com/AV_Lobanov?t=UyYmyMoPierA1Mg3c6Cy8g&amp;s=35" class="twitter" aria-label="X / Twitter"><i class="bx bxl-twitter"></i></a>
+          <a href="https://www.linkedin.com/in/aleksandr-lobanov-10b626325/" class="linkedin" aria-label="LinkedIn"><i class="bx bxl-linkedin"></i></a>
+        </div>
+      </div>
+
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="index.html#hero" class="nav-link"><i class="bx bx-home-alt"></i><span>Home</span></a></li>
+          <li><a href="portfolio-talks.html" class="nav-link"><i class="bx bx-microphone"></i><span>Talks</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="breadcrumbs" class="breadcrumbs portfolio-breadcrumbs">
+      <div class="container">
+        <nav class="portfolio-breadcrumb-nav" aria-label="Breadcrumb">
+          <ol>
+            <li>
+              <a href="index.html">
+                <i class="bx bx-home-alt" aria-hidden="true"></i>
+                <span>Home</span>
+              </a>
+            </li>
+            <li class="portfolio-breadcrumb-current" aria-current="page">
+              <i class="bx bx-chevron-right" aria-hidden="true"></i>
+              <span>Academic Map</span>
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+
+    <section class="portfolio-details academic-map-section" data-academic-map>
+      <div class="container">
+        <div class="portfolio-page-hero portfolio-page-hero--map">
+          <div class="portfolio-page-hero-copy">
+            <span class="portfolio-page-kicker">Research without borders</span>
+            <h2>Academic Map</h2>
+            <p>Conferences, invited talks, academic schools and research visits drawn directly from the Talks page.</p>
+          </div>
+          <div class="portfolio-page-hero-mark" aria-hidden="true">
+            <i class="bx bx-world"></i>
+          </div>
+        </div>
+
+        <section class="academic-map-overview" aria-label="Academic travel overview">
+          <div class="academic-map-stats">
+            <article class="academic-map-stat">
+              <strong data-academic-map-stat="countries">10</strong>
+              <span>Countries</span>
+            </article>
+            <article class="academic-map-stat">
+              <strong data-academic-map-stat="cities">20</strong>
+              <span>Cities visited</span>
+            </article>
+            <article class="academic-map-stat">
+              <strong data-academic-map-stat="visits">42</strong>
+              <span>In-person entries</span>
+            </article>
+            <article class="academic-map-stat">
+              <strong data-academic-map-stat="online">5</strong>
+              <span>Online entries</span>
+            </article>
+          </div>
+
+          <div class="academic-map-filters">
+            <div class="academic-map-filter">
+              <label for="academic-map-year">Year</label>
+              <select id="academic-map-year" data-academic-map-year>
+                <option value="all">All years</option>
+              </select>
+            </div>
+            <div class="academic-map-filter">
+              <label for="academic-map-type">Activity</label>
+              <select id="academic-map-type" data-academic-map-type>
+                <option value="all">All activities</option>
+                <option value="talk">Talks &amp; conferences</option>
+                <option value="event">Schools &amp; research visits</option>
+              </select>
+            </div>
+            <div class="academic-map-filter">
+              <label for="academic-map-mode">Participation</label>
+              <select id="academic-map-mode" data-academic-map-mode>
+                <option value="in-person">In person</option>
+                <option value="online">Online</option>
+                <option value="all">All formats</option>
+              </select>
+            </div>
+          </div>
+        </section>
+
+        <div class="academic-map-layout">
+          <div class="academic-map-canvas-card">
+            <div class="academic-map-canvas" data-academic-map-canvas aria-label="Interactive map of academic activity">
+              <!-- %%%%26.04.2026%%%%%%% expanded Natural Earth map for 2026 East Asia locations -->
+              <img src="assets/img/academic-map-region.svg?v=20260905-east-asia" class="academic-map-backdrop" width="1200" height="600" alt="">
+              <!-- %%%%26.04.2026%%%%%%% expanded Natural Earth map for 2026 East Asia locations -->
+              <div class="academic-map-marker-layer" data-academic-map-marker-layer></div>
+              <div class="academic-map-popup-card" data-academic-map-popup hidden>
+                <button type="button" class="academic-map-popup-close" data-academic-map-popup-close aria-label="Close location details">
+                  <i class="bx bx-x" aria-hidden="true"></i>
+                </button>
+                <div class="academic-map-popup-content" data-academic-map-popup-content></div>
+              </div>
+            </div>
+            <p class="academic-map-status" data-academic-map-status role="status" aria-live="polite">Loading locations from Talks...</p>
+          </div>
+
+          <aside class="academic-map-locations-card" aria-label="Map locations">
+            <div class="academic-map-locations-heading">
+              <h3>Locations <span data-academic-map-location-count>20</span></h3>
+              <p>Select a city to highlight it and view its academic events.</p>
+            </div>
+            <div class="academic-map-locations" data-academic-map-locations>
+              <p class="academic-map-empty">Loading locations...</p>
+            </div>
+          </aside>
+        </div>
+
+        <div class="academic-map-note">
+          <i class="bx bx-info-circle" aria-hidden="true"></i>
+          <span>Online participation is kept separate from physical travel. Locations come from the current <a href="portfolio-talks.html">Talks page</a>; geographic contours use public-domain <a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener noreferrer">Natural Earth</a> data.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; 2023-<time data-current-year datetime="2026">2026</time> <strong><span>Aleksandr Lobanov</span></strong>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Back to top"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- %%%%26.04.2026%%%%%%% embedded Talks map data start -->
+  <script type="application/json" id="academic-talks-data">
+[
+  {
+    "city": "Irkutsk",
+    "country": "Russia",
+    "date": "September 28–29, 2026",
+    "event": "Invited Talk , 2nd Wireless Workshop \"Step into the Future\" , Wireless Business Unit, Huawei Russian Research Institute",
+    "online": false,
+    "type": "talk",
+    "url": "https://career.huawei.ru/rri/en/",
+    "year": "2026"
+  },
+  {
+    "city": "Lisbon",
+    "country": "Portugal",
+    "date": "July 20–25, 2026",
+    "event": "Summer School at Instituto Superior Técnico (IST)",
+    "online": false,
+    "type": "event",
+    "url": "https://lxmls.it.pt/",
+    "year": "2026"
+  },
+  {
+    "city": "Shenzhen",
+    "country": "China",
+    "date": "May 30, 2026",
+    "event": "Invited Research Seminar , Zhi-Quan (Tom) Luo's Group, The Chinese University of Hong Kong, Shenzhen",
+    "online": true,
+    "type": "talk",
+    "url": "https://sse.cuhk.edu.cn/en/faculty/luozhiquan",
+    "year": "2026"
+  },
+  {
+    "city": "Shenzhen",
+    "country": "China",
+    "date": "March 27 – April 02, 2026",
+    "event": "Academic Exchange Activities at Shenzhen Loop Area Institute",
+    "online": false,
+    "type": "event",
+    "url": "https://www.slai.edu.cn/en",
+    "year": "2026"
+  },
+  {
+    "city": "Sirius",
+    "country": "Russia",
+    "date": "October 07, 2025",
+    "event": "Quasilinear Equations, Inverse Problems and their Applications (QIPA 2025)",
+    "online": false,
+    "type": "talk",
+    "url": "https://qipa2025.mipt.ru/",
+    "year": "2025"
+  },
+  {
+    "city": "Sirius",
+    "country": "Russia",
+    "date": "September 30, 2025",
+    "event": "Scientific and Practical Intensive on Replication of State-of-the-art Scientific Results",
+    "online": false,
+    "type": "talk",
+    "url": "https://education.yandex.ru/sirius/sota",
+    "year": "2025"
+  },
+  {
+    "city": "Split",
+    "country": "Croatia",
+    "date": "September 08 - 12, 2025",
+    "event": "Summer School at University of Split",
+    "online": false,
+    "type": "event",
+    "url": "https://www.m2lschool.org/",
+    "year": "2025"
+  },
+  {
+    "city": "Champs-sur-Marne",
+    "country": "France",
+    "date": "August 01, 2025",
+    "event": "XVII th Conference on Stochastic Programming (ICSP 2025)",
+    "online": false,
+    "type": "talk",
+    "url": "https://icsp2025.org/",
+    "year": "2025"
+  },
+  {
+    "city": "Innopolis",
+    "country": "Russia",
+    "date": "June 23 - 28, 2025",
+    "event": "Summer School at Innopolis University",
+    "online": false,
+    "type": "event",
+    "url": "https://ssopt.org/",
+    "year": "2025"
+  },
+  {
+    "city": "Moscow",
+    "country": "Russia",
+    "date": "May 25, 2025",
+    "event": "Data Fest 2025 (Yandex)",
+    "online": false,
+    "type": "talk",
+    "url": "https://youtu.be/L-8U9NtQpP8?si=9i_E0afAJ3espKBL",
+    "year": "2025"
+  },
+  {
+    "city": "Sirius",
+    "country": "Russia",
+    "date": "March 28, 2025",
+    "event": "The International Conference dedicated to mathematics in artificial intelligence",
+    "online": false,
+    "type": "talk",
+    "url": "https://mathai.club/",
+    "year": "2025"
+  },
+  {
+    "city": "Abu Dhabi",
+    "country": "UAE",
+    "date": "November 01 - December 28, 2024",
+    "event": "Research Assistant at MBZUAI",
+    "online": false,
+    "type": "event",
+    "url": "https://mbzuai.ac.ae/research/department/machine-learning-department/",
+    "year": "2024"
+  },
+  {
+    "city": "Moscow",
+    "country": "Russia",
+    "date": "October 26, 2024",
+    "event": "Conference on Machine Learning \"Fall into ML 2024\"",
+    "online": false,
+    "type": "talk",
+    "url": "https://cs.hse.ru/ml2024/",
+    "year": "2024"
+  },
+  {
+    "city": "Sirius",
+    "country": "Russia",
+    "date": "October 19, 2024",
+    "event": "Quasilinear Equations, Inverse Problems and their Applications",
+    "online": false,
+    "type": "talk",
+    "url": "https://qipa2024.mipt.ru/",
+    "year": "2024"
+  },
+  {
+    "city": "Sirius",
+    "country": "Russia",
+    "date": "October 16, 2024",
+    "event": "Scientific and Practical Intensive on Replication of State-of-the-art Scientific Results",
+    "online": false,
+    "type": "talk",
+    "url": "https://siriusuniversity.ru/eng",
+    "year": "2024"
+  },
+  {
+    "city": "Sirius",
+    "country": "Russia",
+    "date": "October 14, 2024",
+    "event": "Inverse incorrect problems and machine learning",
+    "online": false,
+    "type": "talk",
+    "url": "https://siriusmathcenter.ru/program_049w",
+    "year": "2024"
+  },
+  {
+    "city": "Sirius",
+    "country": "Russia",
+    "date": "October 11, 2024",
+    "event": "Trusted artificial intelligence",
+    "online": false,
+    "type": "talk",
+    "url": "https://siriusuniversity.ru/eng",
+    "year": "2024"
+  },
+  {
+    "city": "Innopolis",
+    "country": "Russia",
+    "date": "October 07-09, 2024",
+    "event": "Autumn School at Innopolis University",
+    "online": false,
+    "type": "event",
+    "url": "https://ascomp.org/",
+    "year": "2024"
+  },
+  {
+    "city": "Zurich",
+    "country": "Switzerland",
+    "date": "September 27, 2024",
+    "event": "Optimization & Decision Intelligence Group Internal Seminar",
+    "online": true,
+    "type": "talk",
+    "url": "https://odi.inf.ethz.ch/",
+    "year": "2024"
+  },
+  {
+    "city": "Saint Petersburg",
+    "country": "Russia",
+    "date": "September 25, 2024",
+    "event": "Research and Practice Workshop: At the center of AI",
+    "online": false,
+    "type": "talk",
+    "url": "https://aicenter.spbu.ru/partnership/tpost/0h6d3t2lg1-sovremennie-randomizirovannie-algoritmi",
+    "year": "2024"
+  },
+  {
+    "city": "Louvain-la-Neuve",
+    "country": "Belgium",
+    "date": "August 29-30, 2024",
+    "event": "ALGOPT2024 workshop on Algorithmic Optimization: Tools for AI and Data Science",
+    "online": false,
+    "type": "talk",
+    "url": "https://sites.uclouvain.be/algopt2024/",
+    "year": "2024"
+  },
+  {
+    "city": "Saint Petersburg",
+    "country": "Russia",
+    "date": "August 11, 2024",
+    "event": "IV Conference of Russian Mathematical Centers",
+    "online": false,
+    "type": "talk",
+    "url": "https://mc4-conf.ru/applied-mathematics#!/tab/721114977-6",
+    "year": "2024"
+  },
+  {
+    "city": "Novosibirsk",
+    "country": "Russia",
+    "date": "July 29 - August 3, 2024",
+    "event": "Summer School at Novosibirsk State University",
+    "online": false,
+    "type": "event",
+    "url": "https://ssopt.org/",
+    "year": "2024"
+  },
+  {
+    "city": "Lisbon",
+    "country": "Portugal",
+    "date": "July, 11-17, 2024",
+    "event": "Summer School at Instituto Superior Técnico (IST)",
+    "online": false,
+    "type": "event",
+    "url": "http://lxmls.it.pt/2024/",
+    "year": "2024"
+  },
+  {
+    "city": "Innopolis",
+    "country": "Russia",
+    "date": "June 27, 2024",
+    "event": "Main scientific seminar of the Innopolis University «Innopolis. Science»",
+    "online": false,
+    "type": "talk",
+    "url": "https://www.mathnet.ru/php/seminars.phtml?presentid=43306&option_lang=eng",
+    "year": "2024"
+  },
+  {
+    "city": "Moscow",
+    "country": "Russia",
+    "date": "June 25, 2024",
+    "event": "Device Algorithm Summit 2024 (Huawei)",
+    "online": false,
+    "type": "talk",
+    "url": "https://career.huawei.ru/rri/en/",
+    "year": "2024"
+  },
+  {
+    "city": "Moscow",
+    "country": "Russia",
+    "date": "June 19, 2024",
+    "event": "Institute of Artificial Intelligence (MSU) internal seminar",
+    "online": false,
+    "type": "talk",
+    "url": "https://videoprocessing.ai",
+    "year": "2024"
+  },
+  {
+    "city": "Almaty",
+    "country": "Kazakhstan",
+    "date": "April 24, 2024",
+    "event": "WAIT: Workshop on Artificial Intelligence Trustworthiness",
+    "online": false,
+    "type": "talk",
+    "url": "https://ainlconf.ru/2024/wait",
+    "year": "2024"
+  },
+  {
+    "city": "Innopolis",
+    "country": "Russia",
+    "date": "February 08, 2024",
+    "event": "Spring into ML 2024",
+    "online": false,
+    "type": "talk",
+    "url": "https://cs.hse.ru/iai/hdilab/springml2024/",
+    "year": "2024"
+  },
+  {
+    "city": "Moscow",
+    "country": "Russia",
+    "date": "December 04, 2023",
+    "event": "Ivannikov ISP RAS Open Conference",
+    "online": false,
+    "type": "talk",
+    "url": "https://www.isprasopen.ru/en/",
+    "year": "2023"
+  },
+  {
+    "city": "Sirius",
+    "country": "Russia",
+    "date": "November 07, 2023",
+    "event": "Trusted artificial intelligence",
+    "online": false,
+    "type": "talk",
+    "url": "https://siriusuniversity.ru/eng",
+    "year": "2023"
+  },
+  {
+    "city": "Sirius",
+    "country": "Russia",
+    "date": "October 13, 2023",
+    "event": "Scientific and Practical Intensive on Replication of State-of-the-art Scientific Results",
+    "online": false,
+    "type": "talk",
+    "url": "https://siriusuniversity.ru/eng",
+    "year": "2023"
+  },
+  {
+    "city": "Petrovac",
+    "country": "Montenegro",
+    "date": "September 20, 2023",
+    "event": "XIV International Conference Optimization and Applications (OPTIMA-2023)",
+    "online": false,
+    "type": "talk",
+    "url": "https://agora.guru.ru/display.php?conf=OPTIMA-2023",
+    "year": "2023"
+  },
+  {
+    "city": "Petrovac",
+    "country": "Montenegro",
+    "date": "September 20, 2023",
+    "event": "XIV International Conference Optimization and Applications (OPTIMA-2023)",
+    "online": false,
+    "type": "talk",
+    "url": "https://agora.guru.ru/display.php?conf=OPTIMA-2023",
+    "year": "2023"
+  },
+  {
+    "city": "Dolgoprudny",
+    "country": "Russia",
+    "date": "September 15, 2023",
+    "event": "All-Russian seminar on optimization named after B.T. Polyak",
+    "online": true,
+    "type": "talk",
+    "url": "https://www.youtube.com/watch?v=cftIrxQZKd8",
+    "year": "2023"
+  },
+  {
+    "city": "Nizhny Novgorod",
+    "country": "Russia",
+    "date": "July, 10-15, 2023",
+    "event": "Summer School Control, Information and Optimization",
+    "online": false,
+    "type": "event",
+    "url": "https://ssopt.org/",
+    "year": "2023"
+  },
+  {
+    "city": "Ekaterinburg",
+    "country": "Russia",
+    "date": "July 04, 2023",
+    "event": "Mathematical Optimization Theory and Operations Research",
+    "online": false,
+    "type": "talk",
+    "url": "http://motor2023.uran.ru/",
+    "year": "2023"
+  },
+  {
+    "city": "Ekaterinburg",
+    "country": "Russia",
+    "date": "July 04, 2023",
+    "event": "Mathematical Optimization Theory and Operations Research",
+    "online": false,
+    "type": "talk",
+    "url": "http://motor2023.uran.ru/",
+    "year": "2023"
+  },
+  {
+    "city": "Nizhny Novgorod",
+    "country": "Russia",
+    "date": "May 11, 2023",
+    "event": "The 13th International Conference on Network Analysis",
+    "online": true,
+    "type": "talk",
+    "url": "https://nnov.hse.ru/latna/conferences/net2023",
+    "year": "2023"
+  },
+  {
+    "city": "Yerevan",
+    "country": "Armenia",
+    "date": "April 22, 2023",
+    "event": "WAIT: Workshop on Artificial Intelligence Trustworthiness",
+    "online": false,
+    "type": "talk",
+    "url": "https://ainlconf.ru/wait",
+    "year": "2023"
+  },
+  {
+    "city": "Dolgoprudny",
+    "country": "Russia",
+    "date": "April 5, 2023",
+    "event": "65th Russian Scientific Conference of MIPT",
+    "online": false,
+    "type": "talk",
+    "url": "https://conf.mipt.ru/",
+    "year": "2023"
+  },
+  {
+    "city": "Sochi",
+    "country": "Russia",
+    "date": "August 22, 2022",
+    "event": "Quasilinear Equations, Inverse Problems and Their Applications",
+    "online": false,
+    "type": "talk",
+    "url": "https://qipa2022.mipt.ru/home",
+    "year": "2022"
+  },
+  {
+    "city": "Pushkin",
+    "country": "Russia",
+    "date": "June, 20-26, 2022",
+    "event": "Summer School at HSE University",
+    "online": false,
+    "type": "event",
+    "url": "https://cs.hse.ru/hdilab/dataschool/",
+    "year": "2022"
+  },
+  {
+    "city": "Zhukovsky",
+    "country": "Russia",
+    "date": "July 22, 2021",
+    "event": "The International Conference “Mathematical Modelling”",
+    "online": true,
+    "type": "talk",
+    "url": "https://math.mai.ru/files/abstracts2021.pdf",
+    "year": "2021"
+  },
+  {
+    "city": "Sochi",
+    "country": "Russia",
+    "date": "July 19 - August 8, 2021",
+    "event": "Intern-Researcher at Sirius University of Science and Technology",
+    "online": false,
+    "type": "event",
+    "url": "",
+    "year": "2021"
+  },
+  {
+    "city": "Sochi",
+    "country": "Russia",
+    "date": "April 26-30, 2021",
+    "event": "Summit of Young Scientists and Engineers",
+    "online": false,
+    "type": "event",
+    "url": "https://summit.siriusconf.ru/",
+    "year": "2021"
+  },
+  {
+    "city": "Moscow",
+    "country": "Russia",
+    "date": "April 17, 2020",
+    "event": "Gagarin Science Conference",
+    "online": false,
+    "type": "talk",
+    "url": "https://gagarin.mai.ru/files/2020/abstracts2020.pdf",
+    "year": "2020"
+  }
+]
+  </script>
+  <!-- %%%%26.04.2026%%%%%%% embedded Talks map data end -->
+  <script src="assets/js/main.js?v=20260905-navigation-map10"></script>
+</body>
+
+</html>
+<!-- %%%%26.04.2026%%%%%%% academic map page generated from Talks data -->

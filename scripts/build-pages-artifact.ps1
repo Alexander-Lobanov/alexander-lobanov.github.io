@@ -10,6 +10,15 @@ $scriptRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 $projectRoot = Split-Path -Parent $scriptRoot
 $outputPath = Join-Path $projectRoot $OutputDir
 
+# %%%%26.04.2026%%%%%%% Keep map locations synchronized with the Talks table
+$nodeCommand = Get-Command node -ErrorAction Stop
+$talksDataGenerator = Join-Path $scriptRoot "generate-talks-map-data.js"
+& $nodeCommand.Source $talksDataGenerator
+if ($LASTEXITCODE -ne 0) {
+  throw "Failed to generate the academic map data."
+}
+# %%%%26.04.2026%%%%%%% Keep map locations synchronized with the Talks table
+
 if (Test-Path $outputPath) {
   Remove-Item $outputPath -Recurse -Force
 }

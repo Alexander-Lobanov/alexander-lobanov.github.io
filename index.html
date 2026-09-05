@@ -38,7 +38,9 @@
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <!-- %%%%26.04.2026%%%%%%% unified navigation cache version -->
+  <link href="assets/css/style.css?v=20260905-navigation-map5" rel="stylesheet">
+  <!-- %%%%26.04.2026%%%%%%% unified navigation cache version -->
 
   <!-- =======================================================
   * Template Name: iPortfolio
@@ -49,7 +51,9 @@
   ======================================================== -->
 </head>
 
-<body>
+<!-- %%%%26.04.2026%%%%%%% expressive homepage redesign -->
+<body class="home-page">
+<!-- %%%%26.04.2026%%%%%%% expressive homepage redesign -->
 
   <!-- ======= Mobile nav toggle button ======= -->
   <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
@@ -86,44 +90,68 @@
     </div>
   </header><!-- End Header -->
 
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-    <div class="hero-container" data-aos="fade-in">
-      <h1>Aleksandr Lobanov</h1>
-      <p>I'm <span class="typed" data-typed-items="always looking for opportunities to collaborate, a research scientist at MSU, a researcher at HSE"></span></p>
+  <!-- %%%%26.04.2026%%%%%%% bridge-photo homepage hero -->
+  <section id="hero" class="home-hero">
+    <div class="home-hero-shell">
+      <div class="home-hero-copy" data-aos="fade-up">
+        <span class="home-hero-kicker">Optimization · Machine Learning · Research</span>
+        <h1>Aleksandr Lobanov</h1>
+        <p class="home-hero-role">I'm <span class="typed" data-typed-items="always looking for opportunities to collaborate, a research scientist at MSU, a researcher at HSE"></span></p>
+        <div class="home-hero-highlights" aria-label="Current academic roles">
+          <span><i class="bx bx-buildings" aria-hidden="true"></i> Research Scientist · MSU AI Center</span>
+          <!-- %%%%26.04.2026%%%%%%% current roles list corrected and Area Chair icon made semantic -->
+          <span><i class="bx bx-user-check" aria-hidden="true"></i> Area Chair · NeurIPS 2026</span>
+          <!-- %%%%26.04.2026%%%%%%% current roles list corrected and Area Chair icon made semantic -->
+        </div>
+        <div class="home-hero-actions">
+          <a class="home-hero-action home-hero-action--primary" href="portfolio-publication.html">
+            View publications <i class="bx bx-right-arrow-alt" aria-hidden="true"></i>
+          </a>
+          <a class="home-hero-action home-hero-action--secondary" href="https://scholar.google.com/citations?user=D1ji84AAAAAJ&hl=ru">
+            Google Scholar <i class="bx bx-link-external" aria-hidden="true"></i>
+          </a>
+          <a class="home-hero-contact" href="mailto:lobanovav@my.msu.ru" aria-label="Email Aleksandr Lobanov">
+            <i class="bx bx-envelope" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
     </div>
-  </section><!-- End Hero -->
+  </section>
+  <!-- %%%%26.04.2026%%%%%%% bridge-photo homepage hero -->
 
   <main id="main">
 
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
+    <!-- %%%%26.04.2026%%%%%%% editorial homepage About section -->
+    <section id="about" class="about home-section home-about">
       <div class="container">
 
-        <div class="section-title">
+        <div class="section-title home-section-title">
           <h2>About</h2>
         </div>
 
-        <div class="row">
-          <div class="col-lg-4" data-aos="fade-right">
-            <img src="assets/img/profile-img.jpg" class="img-fluid" alt="">
+        <!-- %%%%26.04.2026%%%%%%% portrait restored to About without duplicating the hero image -->
+        <div class="row g-4 align-items-start home-about-layout">
+          <div class="col-lg-4 home-about-photo-column" data-aos="fade-right">
+            <figure class="home-about-photo">
+              <img src="assets/img/profile-img.jpg" width="500" height="500" alt="Aleksandr Lobanov">
+            </figure>
           </div>
-          <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
+          <div class="col-lg-8 content home-about-panel" data-aos="fade-left">
             <h3>ALEKSANDR VLADIMIROVICH LOBANOV</h3>
-            <p class="fst-italic">
-              Here is up-to-date information about me, including my current place of study/work and where I am from.
-            </p>
-            <div class="row">
+            <!-- %%%%26.04.2026%%%%%%% restored the original About introduction in its original position -->
+            <p class="fst-italic home-about-intro">Here is up-to-date information about me, including my current place of study/work and where I am from.</p>
+            <!-- %%%%26.04.2026%%%%%%% restored the original About introduction in its original position -->
+            <div class="row g-3 home-profile-grid">
               <div class="col-lg-6">
-                <ul>
+                <ul class="home-profile-list">
                   <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>29 April 1998</span></li>
-                  <li><i class="bi bi-chevron-right"></i>  <strong>Age:</strong> <span><div id="age"></div></span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span id="age"></span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>lobbsasha@mail.ru</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Moscow, Russia</span></li>
                 </ul>
               </div>
               <div class="col-lg-6">
-                <ul>
+                <ul class="home-profile-list">
                   <li><i class="bi bi-chevron-right"></i> <strong>University:</strong> <span>MSU AI Center</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Position:</strong> <span>Research Scientist</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>lobanovav@my.msu.ru</span></li>
@@ -131,42 +159,49 @@
                 </ul>
               </div>
             </div>
+            <!-- %%%%26.04.2026%%%%%%% updated academic biography -->
             <p>
-              I am a Research Scientist at AI Center, <a href="https://msu.ru/en/">Lomonosov Moscow State University</a>. My research interests include Stochastic Optimization, Machine Learning, Federated Optimization, Gradient-Free Algorithms, etc. Previously, I completed my Ph.D. at the <a href="https://mipt.ru/english/">MIPT</a>, Russia in the Laboratory of Advanced Combinatorics and Network Applications, supervised by <a href="https://labmmo.ru/en/team/1-untitled.html">Alexander Gasnikov</a>. During my PhD I also spent some time at <a href="https://mbzuai.ac.ae/research/department/machine-learning-department/">MBZUAI</a> (ML Department at Mohamed bin Zayed University of Artificial Intelligence).
+              I am a Research Scientist at the Artificial Intelligence Center of <a href="https://msu.ru/en/" target="_blank" rel="noopener noreferrer">Lomonosov Moscow State University</a>. My research focuses on the mathematical foundations of optimization for machine learning, including stochastic optimization, generalized smoothness, training dynamics, derivative-free optimization, and distributed learning. A central theme of my recent work is understanding modern optimization mechanisms &mdash; such as gradient clipping, normalization, and learning-rate warmup &mdash; beyond classical global smoothness assumptions. I received my PhD in Applied Mathematics and Computer Science from the <a href="https://mipt.ru/english/" target="_blank" rel="noopener noreferrer">Moscow Institute of Physics and Technology</a> in 2025 under the supervision of <a href="https://scholar.google.com/citations?user=AmeE8qkAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Prof. Alexander Gasnikov</a>. In 2024, I was also a Visiting Researcher in the Department of Machine Learning at <a href="https://mbzuai.ac.ae/research/department/machine-learning-department/" target="_blank" rel="noopener noreferrer">Mohamed bin Zayed University of Artificial Intelligence (MBZUAI)</a>, hosted by <a href="https://scholar.google.com/citations?user=qKQD-2cAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Prof. Martin Takáč</a>.
             </p>
-            <p>
-              <strong>Area Chair</strong> at <a href="https://neurips.cc/">NeurIPS 2026</a>.
+            <!-- %%%%26.04.2026%%%%%%% updated academic biography -->
+            <!-- %%%%26.04.2026%%%%%%% profile data synchronized from GitHub -->
+            <p class="home-about-highlight">
+              <!-- %%%%26.04.2026%%%%%%% Area Chair is a professional role, not an award -->
+              <i class="bx bx-user-check" aria-hidden="true"></i>
+              <!-- %%%%26.04.2026%%%%%%% Area Chair is a professional role, not an award -->
+              <span><strong>Area Chair</strong> at <a href="https://neurips.cc/">NeurIPS 2026</a>.</span>
             </p>
+            <!-- %%%%26.04.2026%%%%%%% profile data synchronized from GitHub -->
           </div>
         </div>
+        <!-- %%%%26.04.2026%%%%%%% portrait restored to About without duplicating the hero image -->
 
       </div>
     </section><!-- End About Section -->
-
-
-    <!-- ======= Facts Section ======= -->
-    <section id="facts" class="facts section-bg">
+    <!-- %%%%26.04.2026%%%%%%% editorial homepage About section -->
+    <!-- %%%%26.04.2026%%%%%%% interactive homepage research metrics -->
+    <section id="facts" class="facts section-bg home-section home-facts">
       <div class="container">
 
-        <div class="section-title">
+        <div class="section-title home-section-title">
           <h2>Facts</h2>
-          <p>Below is information about the scientific work taken from Google scholar, including the number of publications, citations, etc. You can read more about this information by going to my <strong style="border:5px #00BFFF  ridge; width:195px;">
- <a href="https://scholar.google.com/citations?user=D1ji84AAAAAJ&hl=ru">Google Scholar</a></strong>  profile.</p>
+          <p>Below is information about the scientific work taken from Google scholar, including the number of publications, citations, etc. You can read more about this information by going to my
+            <a class="home-scholar-link" href="https://scholar.google.com/citations?user=D1ji84AAAAAJ&hl=ru">Google Scholar <i class="bx bx-link-external" aria-hidden="true"></i></a> profile.
+          </p>
+          <p class="home-scholar-update">
+            <i class="bx bx-refresh" aria-hidden="true"></i>
+            Scholar snapshot updated <time data-scholar-updated datetime="2026-09-05T07:38:39.3287890Z">5 September 2026</time>
+          </p>
         </div>
-
-
-
-        <div class="row no-gutters">
-
-
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up">
-            <div class="count-box">
+        <div class="row g-3 home-stats-grid">
+          <div class="col-lg-3 col-md-6 home-stat-column" data-aos="fade-up">
+            <a class="count-box home-stat-card" href="portfolio-publication.html" aria-label="Open the publications page">
               <i class="bi bi-journals"></i>
-              <!-- %%%%26.04.2026%%%%%%% Google Scholar stats -->
-              <span data-purecounter-start="0" data-purecounter-end="36" data-purecounter-duration="1" class="purecounter"></span>
+              <!-- %%%%26.04.2026%%%%%%% publication count synchronized with publication page -->
+              <span data-purecounter-start="0" data-purecounter-end="36" data-purecounter-duration="1" class="purecounter">36</span>
               <p><strong>Articles</strong>  prepared for publication in journals/conferences</p>
 
-            </div>
+            </a>
           </div>
 
           <!-- <script>
@@ -186,37 +221,38 @@
           </script> -->
 
 
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="0">
-            <div class="count-box">
+          <div class="col-lg-3 col-md-6 home-stat-column" data-aos="fade-up" data-aos-delay="60">
+            <a class="count-box home-stat-card" href="https://scholar.google.com/citations?user=D1ji84AAAAAJ&hl=ru" aria-label="View citations on Google Scholar">
               <i class="bi bi-quote"></i>
               <!-- %%%%26.04.2026%%%%%%% Google Scholar stats -->
-              <span data-scholar-stat="citations" data-purecounter-start="0" data-purecounter-end="352" data-purecounter-duration="1" class="purecounter">352</span>
+              <span data-scholar-stat="citations" data-purecounter-start="0" data-purecounter-end="401" data-purecounter-duration="1" class="purecounter">401</span>
               <p><strong>Number of citations</strong>  to prepared articles</p>
-            </div>
+            </a>
           </div>
 
-
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="0">
-            <div class="count-box">
+          <div class="col-lg-3 col-md-6 home-stat-column" data-aos="fade-up" data-aos-delay="120">
+            <a class="count-box home-stat-card" href="https://scholar.google.com/citations?user=D1ji84AAAAAJ&hl=ru" aria-label="View h-index on Google Scholar">
               <i class="bi bi-graph-up"></i>
               <!-- %%%%26.04.2026%%%%%%% Google Scholar stats -->
               <span data-scholar-stat="hIndex" data-purecounter-start="0" data-purecounter-end="12" data-purecounter-duration="1" class="purecounter">12</span>
               <p><strong>h-index</strong> such that h articles have at least h citations</p>
-            </div>
+            </a>
           </div>
 
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="0">
-            <div class="count-box">
+          <div class="col-lg-3 col-md-6 home-stat-column" data-aos="fade-up" data-aos-delay="180">
+            <a class="count-box home-stat-card" href="https://scholar.google.com/citations?user=D1ji84AAAAAJ&hl=ru" aria-label="View co-authors on Google Scholar">
               <i class="bi bi-people"></i>
-              <span data-purecounter-start="0" data-purecounter-end="40" data-purecounter-duration="1" class="purecounter"></span>
+              <!-- %%%%26.04.2026%%%%%%% co-author count synchronized from GitHub -->
+              <span data-purecounter-start="0" data-purecounter-end="40" data-purecounter-duration="1" class="purecounter">40</span>
               <p><strong>Co-authors</strong> who worked on joint projects</p>
-            </div>
+            </a>
           </div>
 
         </div>
 
       </div>
     </section><!-- End Facts Section -->
+    <!-- %%%%26.04.2026%%%%%%% interactive homepage research metrics -->
 
 
 
@@ -304,19 +340,21 @@
 
 
 
-    <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio section-bg">
+    <!-- %%%%26.04.2026%%%%%%% refined homepage portfolio section -->
+    <section id="portfolio" class="portfolio section-bg home-section home-portfolio">
       <div class="container">
 
-        <div class="section-title">
+        <div class="section-title home-section-title">
           <h2>Portfolio</h2>
-          <p>Information collected here includes a complete list of publications, talks and participation in scientific events, as well as a list of the teaching disciplines (seminar classes). To read more details, just click on the button: <i class="bx bx-link" style="background: #149ddd; color: #fff;"></i>.
+          <!-- %%%%26.04.2026%%%%%%% clear portfolio navigation instruction -->
+          <p>Information collected here includes a complete list of publications, talks and participation in scientific events, as well as a list of the teaching disciplines (seminar classes). Select a section below to read more details.
           </p>
+          <!-- %%%%26.04.2026%%%%%%% clear portfolio navigation instruction -->
         </div>
 
         <div class="row" data-aos="fade-up">
           <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="portfolio-flters">
+            <ul id="portfolio-flters" aria-label="Filter portfolio sections">
               <li data-filter="*" class="filter-active">All</li>
               <li data-filter=".filter-publ_and_talks">Publications & Talks</li>
               <li data-filter=".filter-educ_and_emplo">Education & Employment</li>
@@ -327,79 +365,77 @@
 
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
 
+          <!-- %%%%26.04.2026%%%%%%% unified lightweight portfolio covers -->
           <div class="col-lg-4 col-md-6 portfolio-item filter-publ_and_talks">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/publication.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/publication.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-zoom-in"></i></a>
-                <a href="portfolio-publication.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-              <div class="portfolio-title" class="portfolio-lightbox"><p> Publications </p>
-              </div>
+            <div class="portfolio-wrap portfolio-section-card">
+              <a class="portfolio-card-link" href="portfolio-publication.html" aria-label="Open Publications page">
+                <img src="assets/img/portfolio/publication.svg" class="img-fluid portfolio-cover" width="640" height="420" loading="lazy" decoding="async" alt="">
+                <span class="portfolio-card-content">
+                  <span class="portfolio-card-name">Publications</span>
+                  <span class="portfolio-card-action">Open section <i class="bx bx-right-arrow-alt" aria-hidden="true"></i></span>
+                </span>
+              </a>
             </div>
           </div>
-
-
           <div class="col-lg-4 col-md-6 portfolio-item filter-educ_and_emplo">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/employment.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/employment.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-zoom-in"></i></a>
-                <a href="portfolio-employment.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-              <div class="portfolio-title" class="portfolio-lightbox"><p> Employment </p>
-              </div>
+            <div class="portfolio-wrap portfolio-section-card">
+              <a class="portfolio-card-link" href="portfolio-employment.html" aria-label="Open Employment page">
+                <img src="assets/img/portfolio/employment.svg" class="img-fluid portfolio-cover" width="640" height="420" loading="lazy" decoding="async" alt="">
+                <span class="portfolio-card-content">
+                  <span class="portfolio-card-name">Employment</span>
+                  <span class="portfolio-card-action">Open section <i class="bx bx-right-arrow-alt" aria-hidden="true"></i></span>
+                </span>
+              </a>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-publ_and_talks">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/talks.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/talks.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-zoom-in"></i></a>
-                <a href="portfolio-talks.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-              <div class="portfolio-title" class="portfolio-lightbox"><p> Talks </p>
-              </div>
+            <div class="portfolio-wrap portfolio-section-card">
+              <a class="portfolio-card-link" href="portfolio-talks.html" aria-label="Open Talks page">
+                <img src="assets/img/portfolio/talks.svg" class="img-fluid portfolio-cover" width="640" height="420" loading="lazy" decoding="async" alt="">
+                <span class="portfolio-card-content">
+                  <span class="portfolio-card-name">Talks</span>
+                  <span class="portfolio-card-action">Open section <i class="bx bx-right-arrow-alt" aria-hidden="true"></i></span>
+                </span>
+              </a>
             </div>
           </div>
-
-
           <div class="col-lg-4 col-md-6 portfolio-item filter-teach_and_awards">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/teaching_NEW.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/teaching_NEW.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-zoom-in"></i></a>
-                <a href="portfolio-teaching.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-              <div class="portfolio-title" class="portfolio-lightbox"><p> Teaching </p>
-              </div>
+            <div class="portfolio-wrap portfolio-section-card">
+              <a class="portfolio-card-link" href="portfolio-teaching.html" aria-label="Open Teaching page">
+                <img src="assets/img/portfolio/teaching.svg" class="img-fluid portfolio-cover" width="640" height="420" loading="lazy" decoding="async" alt="">
+                <span class="portfolio-card-content">
+                  <span class="portfolio-card-name">Teaching</span>
+                  <span class="portfolio-card-action">Open section <i class="bx bx-right-arrow-alt" aria-hidden="true"></i></span>
+                </span>
+              </a>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-educ_and_emplo">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/education.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/education.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-zoom-in"></i></a>
-                <a href="portfolio-education.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-              <div class="portfolio-title" class="portfolio-lightbox"><p> Education </p>
-              </div>
+            <div class="portfolio-wrap portfolio-section-card">
+              <a class="portfolio-card-link" href="portfolio-education.html" aria-label="Open Education page">
+                <img src="assets/img/portfolio/education.svg" class="img-fluid portfolio-cover" width="640" height="420" loading="lazy" decoding="async" alt="">
+                <span class="portfolio-card-content">
+                  <span class="portfolio-card-name">Education</span>
+                  <span class="portfolio-card-action">Open section <i class="bx bx-right-arrow-alt" aria-hidden="true"></i></span>
+                </span>
+              </a>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-teach_and_awards">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/awards.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/awards.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-zoom-in"></i></a>
-                <a href="portfolio-publication.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-              <div class="portfolio-title" class="portfolio-lightbox"><p> Awards </p>
-              </div>
+            <div class="portfolio-wrap portfolio-section-card">
+              <a class="portfolio-card-link" href="portfolio-awards.html" aria-label="Open Awards page">
+                <img src="assets/img/portfolio/awards.svg" class="img-fluid portfolio-cover" width="640" height="420" loading="lazy" decoding="async" alt="">
+                <span class="portfolio-card-content">
+                  <span class="portfolio-card-name">Awards</span>
+                  <span class="portfolio-card-action">Open section <i class="bx bx-right-arrow-alt" aria-hidden="true"></i></span>
+                </span>
+              </a>
             </div>
           </div>
+          <!-- %%%%26.04.2026%%%%%%% unified lightweight portfolio covers -->
 
 
 
@@ -509,48 +545,51 @@
       </div>
 
     </section><!-- End Portfolio Section -->
+    <!-- %%%%26.04.2026%%%%%%% refined homepage portfolio section -->
 
-    <!-- ======= Services Section ======= -->
-    <section id="services" class="services">
+    <!-- %%%%26.04.2026%%%%%%% expressive homepage Others bento grid -->
+    <section id="services" class="services home-section home-others">
       <div class="container">
 
-        <div class="section-title">
+        <div class="section-title home-section-title">
           <h2>Others</h2>
           <p>Below is additional information about me, including a complete list of research interests, computer skills, foreign language skills, hobbies, and a complete list of conferences in which I have been a reviewer.</p>
         </div>
 
-        <div class="row">
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
+        <div class="row home-bento-grid">
+          <div class="col-lg-4 col-md-6 icon-box home-bento-card" data-aos="fade-up">
             <div class="icon"><i class="bi bi-pin-angle"></i></div>
             <h4 class="title">Research Interest</h4>
             <p class="description">Optimization for Machine Learning, Federated and Distributed learning, Gradient-Free Algorithms, Convex Optimization</p>
           </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-4 col-md-6 icon-box home-bento-card" data-aos="fade-up" data-aos-delay="100">
             <div class="icon"><i class="bi bi-code-slash"></i></div>
             <h4 class="title">Programming</h4>
-            <ul class="description", style="list-style: none;">
+            <ul class="description home-plain-list">
               <li>Python, LaTeX, C++, C#,</li>
               <li>MATLAB (basic), SQL</li>
               <!-- <li>C, C++</li> -->
             </ul>
             <!-- <p class="description">Python, LaTeX, C++, C#, MATLAB (basic), SQL</p> -->
           </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
+          <div class="col-lg-4 col-md-6 icon-box home-bento-card" data-aos="fade-up" data-aos-delay="200">
             <div class="icon"><i class="bi bi-bicycle"></i></div>
             <h4 class="title">Hobbies</h4>
             <p class="description">Football, Basketball, Cycling, Hiking, Swimming, Skiing, Solving Puzzle Games, Travelling</p>
           </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
+          <div class="col-lg-4 col-md-6 icon-box home-bento-card" data-aos="fade-up" data-aos-delay="300">
             <div class="icon"><i class='bx bxs-slideshow'></i></div>
             <h4 class="title">A/A* Conferences</h4>
             <!-- <ul class="description">
               <li>Microsoft Windows,</li>
               <li>Linux</li>
             </ul> -->
-            <p class="description"><a href="https://openreview.net/pdf?id=vHSQTEIFkp" style="color: black;">NeurIPS 2023</a>, NeurIPS 2024</p>
+            <!-- %%%%26.04.2026%%%%%%% added the NeurIPS 2024 paper link -->
+            <p class="description"><a href="https://openreview.net/pdf?id=vHSQTEIFkp">NeurIPS 2023</a>, <a href="https://proceedings.neurips.cc/paper_files/paper/2024/file/26289c647c6828e862e271ca3c490486-Paper-Conference.pdf" target="_blank" rel="noopener noreferrer">NeurIPS 2024</a></p>
+            <!-- %%%%26.04.2026%%%%%%% added the NeurIPS 2024 paper link -->
             <!-- <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p> -->
           </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
+          <div class="col-lg-4 col-md-6 icon-box home-bento-card" data-aos="fade-up" data-aos-delay="400">
             <div class="icon"><i class="bi bi-type"></i></div>
             <h4 class="title">Languages</h4>
             <!-- <p class="description"> -->
@@ -560,19 +599,17 @@
               </ul>
             <!-- </p> -->
           </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="500">
+          <div class="col-lg-4 col-md-6 icon-box home-bento-card" data-aos="fade-up" data-aos-delay="500">
             <div class="icon"><i class="bi bi-calendar4-week"></i></div>
             <h4 class="title">Reviewer for</h4>
-            <p class="description"><a href="https://ainlconf.ru/wait" style="color: black;">WAIT'{23,24}</a>, <a href="http://motor2023.uran.ru/" style="color: black;">MOTOR'23</a>, <a href="https://agora.guru.ru/display.php?conf=OPTIMA-2023" style="color: black;">OPTIMA'23</a>, <a href="https://nips.cc/" style="color: black;">NeurIPS'{24,25}</a>, <a href="https://jmlr.org/" style="color: black;">JMLR</a>, <a href="https://iclr.cc/" style="color: black;">ICLR'25</a>, <a href="https://icml.cc/" style="color: black;">ICML'25</a></p>
+            <!-- %%%%26.04.2026%%%%%%% reviewer conferences and years synchronized with the current CV -->
+            <p class="description"><a href="https://aaai.org/conference/aaai/aaai-27/"><strong>AAAI</strong>'27</a>; <strong>ICML</strong>'{<a href="https://icml.cc/Conferences/2025/">25</a>,<a href="https://icml.cc/Conferences/2026/">26</a>}; <strong>ICLR</strong>'{<a href="https://iclr.cc/Conferences/2025/">25</a>,<a href="https://iclr.cc/Conferences/2026/">26</a>}; <a href="https://kdd2026.kdd.org/"><strong>KDD</strong>'26</a>; <strong>NeurIPS</strong>'{<a href="https://neurips.cc/Conferences/2024/">24</a>,<a href="https://neurips.cc/Conferences/2025/">25</a>}; <strong>OPTIMA</strong>'{<a href="https://agora.guru.ru/display.php?conf=OPTIMA-2023">23</a>,<a href="https://agora.guru.ru/display.php?conf=OPTIMA-2024">24</a>}; <strong>MOTOR</strong>'{<a href="https://motor2023.uran.ru/">23</a>,<a href="https://motor24.oscsbras.ru/">24</a>}; <strong>WAIT</strong>'{<a href="https://ainlconf.ru/temp/wait">23</a>,<a href="https://ainlconf.ru/2024/wait">24</a>}</p>
+            <!-- %%%%26.04.2026%%%%%%% reviewer conferences and years synchronized with the current CV -->
           </div>
         </div>
-        <div>
-          <h2> </h2>
-          <!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
-        </div>
-
       </div>
     </section><!-- End Services Section -->
+    <!-- %%%%26.04.2026%%%%%%% expressive homepage Others bento grid -->
 
     <!-- ======= Skills Section ======= -->
     <!-- <section id="skills" class="skills section-bg">
@@ -802,12 +839,7 @@
     <!-- </section> -->
     <!-- End Contact Section -->
 
-    <!-- ======= Низ сайта ======= -->
-    <section id="footer_main" class="footer_main">
-      <div class="container">
-      </div>
-    </section>
-    <!-- End Hero -->
+    <!-- %%%%26.04.2026%%%%%%% removed empty legacy footer spacer -->
 
   </main><!-- End #main -->
 
@@ -815,7 +847,9 @@
   <footer id="footer">
     <div class="container">
       <div class="copyright">
-        &copy; 2023-<time id="year"></time> <strong><span>Aleksandr Lobanov</span></strong>
+        <!-- %%%%26.04.2026%%%%%%% automatic current year -->
+        &copy; 2023-<time id="year" data-current-year datetime="2026">2026</time> <strong><span>Aleksandr Lobanov</span></strong>
+        <!-- %%%%26.04.2026%%%%%%% automatic current year -->
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
@@ -843,7 +877,9 @@
   <!-- Template Main JS File -->
   <!-- %%%%26.04.2026%%%%%%% Google Scholar stats -->
   <script src="assets/js/scholar-stats.js"></script>
-  <script src="assets/js/main.js"></script>
+  <!-- %%%%26.04.2026%%%%%%% unified navigation cache version -->
+  <script src="assets/js/main.js?v=20260905-navigation-map10"></script>
+  <!-- %%%%26.04.2026%%%%%%% unified navigation cache version -->
 
 </body>
 

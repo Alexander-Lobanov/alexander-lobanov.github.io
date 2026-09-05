@@ -37,7 +37,9 @@
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <!-- %%%%26.04.2026%%%%%%% unified navigation cache version -->
+  <link href="assets/css/style.css?v=20260905-navigation-map5" rel="stylesheet">
+  <!-- %%%%26.04.2026%%%%%%% unified navigation cache version -->
 
   <!-- =======================================================
   * Template Name: iPortfolio
@@ -52,7 +54,9 @@
 
 
 
-<body>
+<!-- %%%%26.04.2026%%%%%%% publications page visual theme -->
+<body class="publications-page">
+<!-- %%%%26.04.2026%%%%%%% publications page visual theme -->
 
   <!-- ======= Mobile nav toggle button ======= -->
   <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
@@ -92,17 +96,24 @@
   <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
+    <section id="breadcrumbs" class="breadcrumbs portfolio-breadcrumbs">
       <div class="container">
-
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>Publications</h2>
+        <!-- %%%%26.04.2026%%%%%%% compact portfolio breadcrumb -->
+        <nav class="portfolio-breadcrumb-nav" aria-label="Breadcrumb">
           <ol>
-            <li><a href="index.html">Home</a></li>
-            <li>Publications</li>
+            <li>
+              <a href="index.html">
+                <i class="bx bx-home-alt" aria-hidden="true"></i>
+                <span>Home</span>
+              </a>
+            </li>
+            <li class="portfolio-breadcrumb-current" aria-current="page">
+              <i class="bx bx-chevron-right" aria-hidden="true"></i>
+              <span>Publications</span>
+            </li>
           </ol>
-        </div>
-
+        </nav>
+        <!-- %%%%26.04.2026%%%%%%% compact portfolio breadcrumb -->
       </div>
     </section><!-- End Breadcrumbs -->
 
@@ -114,7 +125,10 @@
         <div class="row gy-4">
           <!-- <h3>[&#65301;] Gradient optimization methods in machine learning for the identification of dynamic systems parameters <a href="page/new.html" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"></i> <strong>arXiv  </strong> </a> &nbsp; <a href="page/new.html" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"></i> <strong>Download  </strong> </a></h3> -->
 
-          <div class="d-flex flex-column-reverse col-lg-8">
+          <!-- %%%%26.04.2026%%%%%%% spacious publication card stack -->
+          <div class="d-flex flex-column-reverse col-lg-8 publications-stack">
+          <!-- %%%%26.04.2026%%%%%%% spacious publication card stack -->
+            <!-- %%%%26.04.2026%%%%%%% corrected publication links and statuses -->
             <div class="portfolio-publication">
               <h3> Gradient optimization methods in machine learning for the identification of dynamic systems parameters  &nbsp; <a href="https://psyjournals.ru/journals/mda/archive/2019_n4/mda_2019_n4_Panteleev_Lobanov.pdf" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong></i></a></h3>
               <ul>
@@ -137,7 +151,7 @@
               <h3> The mini-batch adaptive method of random search (MAMRS) for parameters optimization in the tracking control problem  &nbsp; <a href="https://iopscience.iop.org/article/10.1088/1757-899X/927/1/012025/pdf" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
               <ul>
                 <li>Andrei Panteleev, <strong>Aleksandr Lobanov</strong></li>
-                <li>2020 <span class="label label-journal">Journal Paper </span><a style="color:#000000;" class="fst-italic"> &nbsp; IOP Conference Series: Materials Science and Engineering</a></li>
+                <li>2020 <span class="label label-conference">Conference Paper</span><a style="color:#000000;" class="fst-italic"> &nbsp; IOP Conference Series: Materials Science and Engineering</a></li>
               </ul>
             </div>
             <p> </p>
@@ -146,13 +160,13 @@
               <h3> Application of the mini-batch adaptive method of random search (MAMRS) in problems of optimal in mean control of the trajectory pencils  &nbsp; <a href="https://iopscience.iop.org/article/10.1088/1742-6596/1925/1/012006/pdf" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
               <ul>
                 <li>Andrei Panteleev, <strong>Aleksandr Lobanov</strong></li>
-                <li>2021 <span class="label label-journal">Journal Paper</span><a style="color:#000000;" class="fst-italic"> &nbsp; Journal of Physics: Conference Series</a></li>
+                <li>2021 <span class="label label-conference">Conference Paper</span><a style="color:#000000;" class="fst-italic"> &nbsp; Journal of Physics: Conference Series</a></li>
               </ul>
             </div>
             <p> </p>
 
             <div class="portfolio-publication">
-              <h3> Application of Mini-Batch Metaheuristic algorithms in problems of optimization of deterministic systems with incomplete information about the state vector  &nbsp; <a href="https://www.mdpi.com/1999-4893/14/11/332" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
+              <h3> Application of Mini-Batch Metaheuristic algorithms in problems of optimization of deterministic systems with incomplete information about the state vector  &nbsp; <a href="https://www.mdpi.com/1999-4893/14/11/332" class="btn-publisher"><i class="bx bx-link-external"> <strong>Publisher</strong> </i></a></h3>
               <ul>
                 <li>Andrei Panteleev, <strong>Aleksandr Lobanov</strong></li>
                 <li>2021 <span class="label label-journal">Journal Paper</span><a style="color:#000000;" class="fst-italic"> &nbsp; Algorithms </a></li>
@@ -161,25 +175,25 @@
             <p> </p>
 
             <div class="portfolio-publication">
-              <h3> Application of the Zero-Order Mini-Batch Optimization Method in the Tracking Control Problem  &nbsp; <a href="https://link.springer.com/chapter/10.1007/978-981-16-8759-4_59" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
+              <h3> Application of the Zero-Order Mini-Batch Optimization Method in the Tracking Control Problem  &nbsp; <a href="https://link.springer.com/chapter/10.1007/978-981-16-8759-4_59" class="btn-publisher"><i class="bx bx-link-external"> <strong>Publisher</strong> </i></a></h3>
               <ul>
                 <li>Andrei Panteleev, <strong>Aleksandr Lobanov</strong></li>
-                <li>2022 <span class="label label-journal">Journal Paper</span><a style="color:#000000;" class="fst-italic"> &nbsp; SMART Automatics and Energy </a></li>
+                <li>2022 <span class="label label-chapter">Book Chapter</span><a style="color:#000000;" class="fst-italic"> &nbsp; SMART Automatics and Energy </a></li>
               </ul>
             </div>
             <p> </p>
 
             <div class="portfolio-publication">
-              <h3> Application of Mini-Batch Adaptive Optimization Method in Stochastic Control Problems  &nbsp; <a href="https://link.springer.com/chapter/10.1007/978-981-16-8926-0_23" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
+              <h3> Application of Mini-Batch Adaptive Optimization Method in Stochastic Control Problems  &nbsp; <a href="https://link.springer.com/chapter/10.1007/978-981-16-8926-0_23" class="btn-publisher"><i class="bx bx-link-external"> <strong>Publisher</strong> </i></a></h3>
               <ul>
                 <li>Andrei Panteleev, <strong>Aleksandr Lobanov</strong></li>
-                <li>2022 <span class="label label-journal">Journal Paper</span><a style="color:#000000;" class="fst-italic"> &nbsp; Advances in Theory and Practice of Computational Mechanics  </a></li>
+                <li>2022 <span class="label label-chapter">Book Chapter</span><a style="color:#000000;" class="fst-italic"> &nbsp; Advances in Theory and Practice of Computational Mechanics  </a></li>
               </ul>
             </div>
             <p> </p>
 
             <div class="portfolio-publication">
-              <h3> Gradient-Free Federated Learning Methods with $l_1$ and $l_2$-Randomization for Non-Smooth Convex Stochastic Optimization Problems  &nbsp; <a href="https://arxiv.org/abs/2211.10783" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="https://link.springer.com/content/pdf/10.1134/S0965542523090026.pdf" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
+              <h3> Gradient-Free Federated Learning Methods with $l_1$ and $l_2$-Randomization for Non-Smooth Convex Stochastic Optimization Problems  &nbsp; <a href="https://arxiv.org/abs/2211.10783" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="https://arxiv.org/pdf/2211.10783" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
               <ul>
                 <li><strong>Aleksandr Lobanov</strong>, Belal Alashqar, Darina Dvinskikh, Alexander Gasnikov</li>
                 <li>2023 <span class="label label-journal">Journal Paper</span><a style="color:#000000;" class="fst-italic"> &nbsp;  Computational Mathematics and Mathematical Physics </a></li>
@@ -188,15 +202,15 @@
             <p> </p>
 
             <div class="portfolio-publication">
-              <h3> Randomized gradient-free methods in convex optimization  &nbsp; <a href="https://arxiv.org/abs/2211.13566" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="https://link.springer.com/content/pdf/10.1007/978-3-030-54621-2_859-1.pdf" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
+              <h3> Randomized gradient-free methods in convex optimization  &nbsp; <a href="https://arxiv.org/abs/2211.13566" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="https://arxiv.org/pdf/2211.13566" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
               <ul>
                 <li>Alexander Gasnikov, Darina Dvinskikh, Pavel Dvurechensky, Eduard Gorbunov, Aleksander Beznosikov, <strong>Aleksandr Lobanov</strong></li>
-                <li>2023 <span class="label label-journal">Journal Paper</span><a style="color:#000000;" class="fst-italic"> &nbsp; Encyclopedia of Optimization </a></li>              </ul>
+                <li>2023 <span class="label label-chapter">Book Chapter</span><a style="color:#000000;" class="fst-italic"> &nbsp; Encyclopedia of Optimization </a></li>              </ul>
             </div>
             <p> </p>
 
             <div class="portfolio-publication">
-              <h3> Nonsmooth Distributed Min-Max Optimization Using the Smoothing Technique  &nbsp; <a href="http://crm-en.ics.org.ru/uploads/crmissues/crm_2023_02/23_chen.pdf" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
+              <h3> Nonsmooth Distributed Min-Max Optimization Using the Smoothing Technique  &nbsp; <a href="https://crm-en.ics.org.ru/uploads/crmissues/crm_2023_02/23_chen.pdf" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
               <ul>
                 <li> Jiawei Chen, <strong>Aleksandr Lobanov</strong>, Alexander Rogozin</li>
                 <li>2023 <span class="label label-journal">Journal Paper</span><a style="color:#000000;" class="fst-italic"> &nbsp; Computer Research and Modeling </a></li>
@@ -205,7 +219,7 @@
             <p> </p>
 
             <div class="portfolio-publication">
-              <h3> Influence of the mantissa finiteness on the accuracy of gradient-free optimization methods  &nbsp; <a href="http://crm-en.ics.org.ru/uploads/crmissues/crm_2023_02/12_vostrikov.pdf" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
+              <h3> Influence of the mantissa finiteness on the accuracy of gradient-free optimization methods  &nbsp; <a href="https://crm-en.ics.org.ru/uploads/crmissues/crm_2023_02/12_vostrikov.pdf" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
               <ul>
                 <li>Daniil Vostrikov, Georgiy Konin, <strong>Aleksandr Lobanov</strong>, Vladislav Matyukhin</li>
                 <li>2023 <span class="label label-journal">Journal Paper</span><a style="color:#000000;" class="fst-italic"> &nbsp; Computer Research and Modeling </a></li>
@@ -214,7 +228,7 @@
             <p> </p>
 
             <div class="portfolio-publication">
-              <h3> Zero-Order Stochastic Conditional Gradient Sliding Method for Non-smooth Convex Optimization  &nbsp; <a href="https://arxiv.org/abs/2303.02778" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="https://link.springer.com/content/pdf/10.1007/978-3-031-43257-6.pdf" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
+              <h3> Zero-Order Stochastic Conditional Gradient Sliding Method for Non-smooth Convex Optimization  &nbsp; <a href="https://arxiv.org/abs/2303.02778" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="https://arxiv.org/pdf/2303.02778" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
               <ul>
                 <li><strong>Aleksandr Lobanov</strong>, Anton Anikin, Alexander Gasnikov, Alexander Gornov, Sergey Chukanov</li>
                 <li>2023 <span class="label label-conference">Conference Paper</span><a style="color:#000000;" class="fst-italic"> &nbsp; Mathematical Optimization Theory and Operations Research (MOTOR2023) </a></li>
@@ -223,7 +237,7 @@
             <p> </p>
 
             <div class="portfolio-publication">
-              <h3> Stochastic Adversarial Noise in the "Black Box" Optimization Problem  &nbsp; <a href="https://arxiv.org/abs/2304.07861" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="https://link.springer.com/content/pdf/10.1007/978-3-031-47859-8.pdf" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
+              <h3> Stochastic Adversarial Noise in the "Black Box" Optimization Problem  &nbsp; <a href="https://arxiv.org/abs/2304.07861" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="https://arxiv.org/pdf/2304.07861" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
               <ul>
                 <li><strong>Aleksandr Lobanov</strong></li>
                 <li>2023 <span class="label label-conference">Conference Paper</span><a style="color:#000000;" class="fst-italic"> &nbsp; XIV International Conference Optimization and Applications (OPTIMA-2023) </a></li>
@@ -232,7 +246,7 @@
             <p> </p>
 
             <div class="portfolio-publication">
-              <h3> Highly Smoothness Zero-Order Methods for Solving Optimization Problems under PL Condition  &nbsp; <a href="https://arxiv.org/abs/2305.15828" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="https://link.springer.com/content/pdf/10.1134/S0965542524700118.pdf" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
+              <h3> Highly Smoothness Zero-Order Methods for Solving Optimization Problems under PL Condition  &nbsp; <a href="https://arxiv.org/abs/2305.15828" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="https://arxiv.org/pdf/2305.15828" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
               <ul>
                 <li><strong>Aleksandr Lobanov</strong>, Alexander Gasnikov, Fedor Stonyakin</li>
                 <li>2023 <span class="label label-journal">Journal Paper</span><a style="color:#000000;" class="fst-italic"> &nbsp;  Computational Mathematics and Mathematical Physics </a></li>
@@ -245,11 +259,12 @@
               <ul>
                 <li>Dmitry Pasechnyuk, <strong>Aleksandr Lobanov</strong>, Alexander Gasnikov</li>
                 <li>2023 <span class="label label-arxiv">arXiv Preprint</span><a style="color:#000000;" class="fst-italic"> &nbsp; </a></li>
+              </ul>
             </div>
             <p> </p>
 
             <div class="portfolio-publication">
-              <h3> Non-Smooth Setting of Stochastic Decentralized Convex Optimization Problem Over Time-Varying Graphs  &nbsp; <a href="https://arxiv.org/abs/2307.00392" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="https://link.springer.com/content/pdf/10.1007/s10287-023-00479-7.pdf" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
+              <h3> Non-Smooth Setting of Stochastic Decentralized Convex Optimization Problem Over Time-Varying Graphs  &nbsp; <a href="https://arxiv.org/abs/2307.00392" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="https://arxiv.org/pdf/2307.00392" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
               <ul>
                 <li><strong>Aleksandr Lobanov</strong>, Andrew Veprikov, Georgiy Konin, Aleksandr Beznosikov, Alexander Gasnikov, Dmitry Kovalev</li>
                 <li>2023 <span class="label label-journal">Journal Paper</span><a style="color:#000000;" class="fst-italic"> &nbsp;  Computational Management Science </a></li>
@@ -258,7 +273,7 @@
             <p> </p>
 
             <div class="portfolio-publication">
-              <h3> Accelerated Zero-Order SGD Method for Solving the Black Box Optimization Problem under "Overparametrization" Condition  &nbsp; <a href="https://arxiv.org/abs/2307.12725" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="https://link.springer.com/content/pdf/10.1007/978-3-031-47859-8.pdf" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
+              <h3> Accelerated Zero-Order SGD Method for Solving the Black Box Optimization Problem under "Overparametrization" Condition  &nbsp; <a href="https://arxiv.org/abs/2307.12725" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="https://arxiv.org/pdf/2307.12725" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
               <ul>
                 <li><strong>Aleksandr Lobanov</strong>, Alexander Gasnikov</li>
                 <li>2023 <span class="label label-conference">Conference Paper</span><a style="color:#000000;" class="fst-italic"> &nbsp; XIV International Conference Optimization and Applications (OPTIMA-2023) </a></li>
@@ -294,7 +309,7 @@
             <p> </p>
 
             <div class="portfolio-publication">
-              <h3> Gradient-free algorithm for saddle point problems under overparametrization  &nbsp; <a href="https://www.sciencedirect.com/science/article/abs/pii/S0960077924006003" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
+              <h3> Gradient-free algorithm for saddle point problems under overparametrization  &nbsp; <a href="https://arxiv.org/abs/2406.02308" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="https://arxiv.org/pdf/2406.02308" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
               <ul>
                 <li>Ekaterina Statkevich, Sofiya Bondar, Darina Dvinskikh, Alexander Gasnikov, <strong>Aleksandr Lobanov</strong></li>
                 <li>2024 <span class="label label-journal">Journal Paper</span><a style="color:#000000;" class="fst-italic"> &nbsp; Chaos, Solitons & Fractals  </a></li>
@@ -303,7 +318,7 @@
             <p> </p>
 
             <div class="portfolio-publication">
-              <h3> On Some Works of Boris Teodorovich Polyak on the Convergence of Gradient Methods and Their Development  &nbsp; <a href="https://arxiv.org/abs/2311.16743" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="https://link.springer.com/content/pdf/10.1134/S0965542524700076.pdf" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
+              <h3> On Some Works of Boris Teodorovich Polyak on the Convergence of Gradient Methods and Their Development  &nbsp; <a href="https://arxiv.org/abs/2311.16743" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="https://arxiv.org/pdf/2311.16743" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
               <ul>
                 <li>Seydamet Ablaev, Aleksandr Beznosikov, Alexander Gasnikov, Darina Dvinskikh, <strong>Aleksandr Lobanov</strong>, Sergei Puchinin, Fedor Stonyakin</li>
                 <li>2024 <span class="label label-journal">Journal Paper</span><a style="color:#000000;" class="fst-italic"> &nbsp;  Computational Mathematics and Mathematical Physics </a></li>
@@ -311,17 +326,19 @@
             </div>
             <p> </p>
 
+            <!-- %%%%26.04.2026%%%%%%% publication data synchronized from GitHub -->
             <div class="portfolio-publication">
-              <h3> Nesterov's method of dichotomy via Order Oracle: The problem of optimizing a two-variable function on a square  &nbsp; <a href="https://arxiv.org/abs/2409.11077" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="https://link.springer.com/content/pdf/10.1007/978-3-031-79119-2.pdf" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
+              <h3> Nesterov's method of dichotomy via Order Oracle: The problem of optimizing a two-variable function on a square  &nbsp; <a href="https://arxiv.org/abs/2409.11077" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="https://arxiv.org/pdf/2409.11077" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
               <ul>
                 <li>Boris Chervonenkis, Andrei Krasnov, Alexander Gasnikov, <strong>Aleksandr Lobanov</strong></li>
                 <li>2024 <span class="label label-conference">Conference Paper</span><a style="color:#000000;" class="fst-italic"> &nbsp;  XV International Conference on Optimization and Applications (OPTIMA 2024) </a></li>
               </ul>
             </div>
+            <!-- %%%%26.04.2026%%%%%%% publication data synchronized from GitHub -->
             <p> </p>
 
             <div class="portfolio-publication">
-              <h3> Asymptotic Analysis of the Ruppert – Polyak Averaging for Stochastic Order Oracle  &nbsp; <a href="https://arxiv.org/abs/2411.15866" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="http://nd.ics.org.ru/upload/iblock/623/nd241219.pdf" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
+              <h3> Asymptotic Analysis of the Ruppert – Polyak Averaging for Stochastic Order Oracle  &nbsp; <a href="https://arxiv.org/abs/2411.15866" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="https://arxiv.org/pdf/2411.15866" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
               <ul>
                 <li>Vladimir Smirnov, Kristina Kazistova, Ilya Sudakov, Valentin Leplat, Alexander Gasnikov, <strong>Aleksandr Lobanov</strong></li>
                 <li>2024 <span class="label label-journal">Journal Paper</span><a style="color:#000000;" class="fst-italic"> &nbsp;  Russian Journal of Nonlinear Dynamics </a></li>
@@ -329,7 +346,7 @@
             </div>
 
             <div class="portfolio-publication">
-              <h3> On Quasi-Convex Smooth Optimization Problems by a Comparison Oracle  &nbsp; <a href="https://arxiv.org/abs/2411.16745" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="http://nd.ics.org.ru/upload/iblock/a69/nd241211.pdf" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
+              <h3> On Quasi-Convex Smooth Optimization Problems by a Comparison Oracle  &nbsp; <a href="https://arxiv.org/abs/2411.16745" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="https://arxiv.org/pdf/2411.16745" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
               <ul>
                 <li>Alexander Gasnikov, Mohammad Alkousa, <strong>Aleksandr Lobanov</strong>, Yuriy Dorn, Fedor Stonyakin, Ilya Kuruzov, Sanjeev Singh</li>
                 <li>2024 <span class="label label-journal">Journal Paper</span><a style="color:#000000;" class="fst-italic"> &nbsp;  Russian Journal of Nonlinear Dynamics </a></li>
@@ -337,7 +354,7 @@
             </div>
 
             <div class="portfolio-publication">
-              <h3> Accelerated Zero-Order SGD under High-Order Smoothness and Overparameterized Regime  &nbsp; <a href="https://arxiv.org/abs/2411.13999" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="http://nd.ics.org.ru/upload/iblock/9ff/nd241209.pdf" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
+              <h3> Accelerated Zero-Order SGD under High-Order Smoothness and Overparameterized Regime  &nbsp; <a href="https://arxiv.org/abs/2411.13999" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="https://arxiv.org/pdf/2411.13999" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
               <ul>
                 <li>Georgii Bychkov, Darina Dvinskikh, Anastasia Antsiferova, Alexander Gasnikov, <strong>Aleksandr Lobanov</strong></li>
                 <li>2024 <span class="label label-journal">Journal Paper</span><a style="color:#000000;" class="fst-italic"> &nbsp;  Russian Journal of Nonlinear Dynamics </a></li>
@@ -353,7 +370,7 @@
             </div>
 
             <div class="portfolio-publication">
-              <h3> Improved Maximum Noise Level Estimation in Black-Box Optimization Problems   &nbsp; <a href="http://ftp.pdmi.ras.ru/pub/publicat/znsl/v540/p132.pdf" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
+              <h3> Improved Maximum Noise Level Estimation in Black-Box Optimization Problems   &nbsp; <a href="https://ftp.pdmi.ras.ru/pub/publicat/znsl/v540/p132.pdf" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
               <ul>
                 <li><strong>Aleksandr Lobanov</strong>, Alexander Gasnikov</li>
                 <li>2024 <span class="label label-journal">Journal Paper</span><a style="color:#000000;" class="fst-italic"> &nbsp;  Journal of Mathematical Sciences </a></li>
@@ -361,7 +378,7 @@
             </div>
 
             <div class="portfolio-publication">
-              <h3> The Black-Box Optimization Problem: Zero-Order Accelerated Stochastic Method via Kernel Approximation  &nbsp; <a href="https://arxiv.org/abs/2310.02371" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="https://link.springer.com/content/pdf/10.1007/s10957-024-02556-6.pdf" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
+              <h3> The Black-Box Optimization Problem: Zero-Order Accelerated Stochastic Method via Kernel Approximation  &nbsp; <a href="https://arxiv.org/abs/2310.02371" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="https://arxiv.org/pdf/2310.02371" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
               <ul>
                 <li><strong>Aleksandr Lobanov</strong>, Nail Bashirov, Alexander Gasnikov</li>
                 <li>2024 <span class="label label-journal">Journal Paper</span><a style="color:#000000;" class="fst-italic"> &nbsp;  Journal of Optimization Theory and Applications (JOTA) </a></li>
@@ -393,7 +410,7 @@
             </div>
 
             <div class="portfolio-publication">
-              <h3> Survey of Modern Smooth Optimization Algorithms with Comparison Oracle  &nbsp; <a href="https://journals.rcsi.science/2686-9543/article/view/364244" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
+              <h3> Survey of Modern Smooth Optimization Algorithms with Comparison Oracle  &nbsp; <a href="https://journals.rcsi.science/2686-9543/article/view/364244" class="btn-publisher"><i class="bx bx-link-external"> <strong>Publisher</strong> </i></a></h3>
               <ul>
                 <li><strong>Aleksandr Lobanov</strong>, Alexander Gasnikov</li>
                 <li>2025 <span class="label label-journal">Journal Paper</span><a style="color:#000000;" class="fst-italic"> &nbsp; Doklady Mathematics (in Russian) </a></li>
@@ -408,6 +425,7 @@
               </ul>
             </div>
 
+            <!-- %%%%26.04.2026%%%%%%% 2026 publications synchronized from GitHub -->
             <div class="portfolio-publication">
               <h3> Zeroth-order methods for non-smooth stochastic problems under heavy-tailed noise  &nbsp; <a href="https://openreview.net/pdf?id=iiPWyBbKYp" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
               <ul>
@@ -424,8 +442,84 @@
               </ul>
             </div>
 
+            <!-- %%%%26.04.2026%%%%%%% added arXiv:2608.04884 publication -->
+            <div class="portfolio-publication">
+              <h3> A few accelerated algorithms for convex optimization under (h_0, h_1)-smoothness  &nbsp; <a href="https://arxiv.org/abs/2608.04884" style="color:#fff;" class="btn-arxive rhighlight"> <i class="bx bx-file-blank"> <strong>arXiv</strong></i></a> &nbsp; <a href="https://arxiv.org/pdf/2608.04884" style="color:#fff;" class="btn-donwnload"><i class="bx bxs-download"> <strong>Download  </strong> </i></a></h3>
+              <ul>
+                <li><strong>Aleksandr Lobanov</strong></li>
+                <li>2026 <span class="label label-arxiv">arXiv Preprint</span><a style="color:#000000;" class="fst-italic"> &nbsp; </a></li>
+              </ul>
+            </div>
+            <!-- %%%%26.04.2026%%%%%%% added arXiv:2608.04884 publication -->
+            <!-- %%%%26.04.2026%%%%%%% 2026 publications synchronized from GitHub -->
+            <!-- %%%%26.04.2026%%%%%%% corrected publication links and statuses -->
+
             <p> </p>
 
+            <!-- %%%%26.04.2026%%%%%%% publication filters, search and category statistics -->
+            <div class="publication-empty-state" data-publication-empty hidden>
+              <i class="bx bx-search-alt" aria-hidden="true"></i>
+              <h3>No publications found</h3>
+              <p>Try another title, author or publication type.</p>
+              <button type="button" data-publication-reset>Reset filters</button>
+            </div>
+
+            <div class="publication-explorer" data-publication-explorer>
+              <div class="publication-explorer-heading">
+                <div>
+                  <span class="publication-explorer-kicker">Explore the list</span>
+                  <h3>Find a publication</h3>
+                </div>
+                <p class="publication-results-status" aria-live="polite">
+                  Showing <strong data-publication-visible-count>37</strong>
+                  of <span data-publication-total-count>37</span>
+                </p>
+              </div>
+
+              <div class="publication-search">
+                <i class="bx bx-search" aria-hidden="true"></i>
+                <label class="visually-hidden" for="publication-search-input">Search by title or author</label>
+                <input id="publication-search-input" type="search" placeholder="Search title or author" autocomplete="off" data-publication-search>
+                <button type="button" aria-label="Clear search" data-publication-clear hidden>
+                  <i class="bx bx-x" aria-hidden="true"></i>
+                </button>
+              </div>
+
+              <div class="publication-filters" role="group" aria-label="Filter publications by type">
+                <button class="publication-filter is-active" type="button" data-publication-filter="all" aria-pressed="true">
+                  All <span data-publication-filter-count="all">37</span>
+                </button>
+                <button class="publication-filter" type="button" data-publication-filter="journal" aria-pressed="false">
+                  Journals <span data-publication-filter-count="journal">18</span>
+                </button>
+                <button class="publication-filter" type="button" data-publication-filter="conference" aria-pressed="false">
+                  Conferences <span data-publication-filter-count="conference">8</span>
+                </button>
+                <button class="publication-filter" type="button" data-publication-filter="arxiv" aria-pressed="false">
+                  Preprints <span data-publication-filter-count="arxiv">7</span>
+                </button>
+                <button class="publication-filter" type="button" data-publication-filter="chapter" aria-pressed="false">
+                  Chapters <span data-publication-filter-count="chapter">3</span>
+                </button>
+                <button class="publication-filter" type="button" data-publication-filter="thesis" aria-pressed="false">
+                  Thesis <span data-publication-filter-count="thesis">1</span>
+                </button>
+              </div>
+            </div>
+            <!-- %%%%26.04.2026%%%%%%% publication filters, search and category statistics -->
+
+            <!-- %%%%26.04.2026%%%%%%% Publications page hero -->
+            <div class="portfolio-page-hero portfolio-page-hero--publications">
+              <div class="portfolio-page-hero-copy">
+                <span class="portfolio-page-kicker">Research output</span>
+                <h2>Publications</h2>
+                <p>Peer-reviewed articles, conference papers, preprints and academic work.</p>
+              </div>
+              <div class="portfolio-page-hero-mark" aria-hidden="true">
+                <i class="bx bx-book-open"></i>
+              </div>
+            </div>
+            <!-- %%%%26.04.2026%%%%%%% Publications page hero -->
 
           </div>
 
@@ -434,7 +528,9 @@
           <div class="col-lg-4">
 
             <div class="portfolio-logo">
-              <img src="assets/img/portfolio/publication.jpg" alt="">
+              <!-- %%%%26.04.2026%%%%%%% lightweight unified page illustration -->
+              <img src="assets/img/portfolio/publication.svg" class="portfolio-section-illustration" width="640" height="420" loading="lazy" decoding="async" alt="Illustration of research publications">
+              <!-- %%%%26.04.2026%%%%%%% lightweight unified page illustration -->
               <!-- <h3>Publications list</h3> -->
               <div class="publication-count">
                 <script>
@@ -450,7 +546,9 @@
                 </script>
               </div>
               <ul>
-                <li><strong>Date updated</strong>: <script type="text/javascript">document.write(Date());</script></li>
+                <!-- %%%%26.04.2026%%%%%%% real content update date -->
+                <li><strong>Last updated</strong>: <time datetime="2026-09-05">5 September 2026</time></li>
+                <!-- %%%%26.04.2026%%%%%%% real content update date -->
               </ul>
             </div>
             <!-- <div class="portfolio-info">
@@ -481,7 +579,9 @@
   <footer id="footer">
     <div class="container">
       <div class="copyright">
-        &copy; 2023-2025 <strong><span>Aleksandr Lobanov</span></strong>
+        <!-- %%%%26.04.2026%%%%%%% automatic current year -->
+        &copy; 2023-<time data-current-year datetime="2026">2026</time> <strong><span>Aleksandr Lobanov</span></strong>
+        <!-- %%%%26.04.2026%%%%%%% automatic current year -->
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
@@ -513,7 +613,9 @@
   <script src="assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <!-- %%%%26.04.2026%%%%%%% unified navigation cache version -->
+  <script src="assets/js/main.js?v=20260905-navigation-map10"></script>
+  <!-- %%%%26.04.2026%%%%%%% unified navigation cache version -->
 
 </body>
 

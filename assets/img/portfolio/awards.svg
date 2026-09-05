@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="awards-title awards-desc">
+  <title id="awards-title">Academic awards</title>
+  <desc id="awards-desc">A gold academic medal framed by a laurel wreath and subtle rays.</desc>
+  <!-- %%%%26.04.2026%%%%%%% lightweight academic illustration -->
+  <defs>
+    <linearGradient id="awards-bg" x1="40" y1="25" x2="600" y2="395" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f8fcfd"/>
+      <stop offset=".62" stop-color="#edf7fa"/>
+      <stop offset="1" stop-color="#dff3fc"/>
+    </linearGradient>
+    <radialGradient id="awards-glow" cx="0" cy="0" r="1" gradientTransform="translate(510 90) rotate(130) scale(330)">
+      <stop stop-color="#149ddd" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#78dcf7" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="awards-gold" x1="222" y1="89" x2="418" y2="348" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffe19a"/>
+      <stop offset=".5" stop-color="#f1c459"/>
+      <stop offset="1" stop-color="#c58d25"/>
+    </linearGradient>
+    <pattern id="awards-grid" width="42" height="42" patternUnits="userSpaceOnUse">
+      <path d="M42 0H0V42" fill="none" stroke="#173b6c" stroke-opacity=".08"/>
+    </pattern>
+  </defs>
+  <rect width="640" height="420" rx="30" fill="url(#awards-bg)"/>
+  <rect width="640" height="420" rx="30" fill="url(#awards-grid)"/>
+  <circle cx="507" cy="92" r="220" fill="url(#awards-glow)"/>
+  <path d="M187 327C129 270 132 181 190 126M453 327C511 270 508 181 450 126" fill="none" stroke="#176b92" stroke-linecap="round" stroke-width="9"/>
+  <path d="M174 302L139 291M160 270L124 249M158 233L126 208M166 195L141 165M466 302L501 291M480 270L516 249M482 233L514 208M474 195L499 165" stroke="#176b92" stroke-linecap="round" stroke-width="12"/>
+  <path d="M248 70L320 111L392 70L371 192H269L248 70Z" fill="#173b6c"/>
+  <path d="M275 76L320 111L365 76L350 174H290L275 76Z" fill="#176b92"/>
+  <circle cx="320" cy="240" r="104" fill="url(#awards-gold)"/>
+  <circle cx="320" cy="240" r="78" fill="none" stroke="#fff3c9" stroke-opacity=".75" stroke-width="5"/>
+  <path d="M320 178L337 218L380 222L347 250L357 292L320 270L283 292L293 250L260 222L303 218L320 178Z" fill="#fff8df"/>
+  <path d="M244 348H396" stroke="#176b92" stroke-linecap="round" stroke-opacity=".32" stroke-width="4"/>
+  <!-- %%%%26.04.2026%%%%%%% lightweight academic illustration -->
+</svg>

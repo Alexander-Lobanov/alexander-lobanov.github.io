@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="talks-title talks-desc">
+  <title id="talks-title">Scientific talks</title>
+  <desc id="talks-desc">A conference podium with a microphone and radiating speech waves.</desc>
+  <!-- %%%%26.04.2026%%%%%%% lightweight academic illustration -->
+  <defs>
+    <linearGradient id="talks-bg" x1="40" y1="25" x2="600" y2="395" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f8fcfd"/>
+      <stop offset=".62" stop-color="#edf7fa"/>
+      <stop offset="1" stop-color="#dff3fc"/>
+    </linearGradient>
+    <radialGradient id="talks-glow" cx="0" cy="0" r="1" gradientTransform="translate(506 82) rotate(130) scale(330)">
+      <stop stop-color="#149ddd" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#78dcf7" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="talks-gold" x1="210" y1="115" x2="436" y2="338" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffe19a"/>
+      <stop offset="1" stop-color="#d7a83a"/>
+    </linearGradient>
+    <pattern id="talks-grid" width="42" height="42" patternUnits="userSpaceOnUse">
+      <path d="M42 0H0V42" fill="none" stroke="#173b6c" stroke-opacity=".08"/>
+    </pattern>
+  </defs>
+  <rect width="640" height="420" rx="30" fill="url(#talks-bg)"/>
+  <rect width="640" height="420" rx="30" fill="url(#talks-grid)"/>
+  <circle cx="507" cy="92" r="220" fill="url(#talks-glow)"/>
+  <path d="M405 107C447 124 474 164 474 208M424 73C486 98 526 157 526 222" fill="none" stroke="#176b92" stroke-linecap="round" stroke-opacity=".5" stroke-width="8"/>
+  <circle cx="350" cy="123" r="29" fill="url(#talks-gold)"/>
+  <path d="M350 154V205M350 176C291 176 263 193 248 231" fill="none" stroke="#173b6c" stroke-linecap="round" stroke-width="12"/>
+  <rect x="190" y="214" width="270" height="42" rx="17" fill="#173b6c"/>
+  <path d="M218 252H432L454 348H196L218 252Z" fill="#176b92"/>
+  <path d="M250 280H400M261 307H389" stroke="#eaf5fa" stroke-linecap="round" stroke-width="9"/>
+  <path d="M320 252V348" stroke="#8bdcf3" stroke-width="3"/>
+  <circle cx="116" cy="338" r="13" fill="#176b92" fill-opacity=".38"/>
+  <circle cx="153" cy="338" r="13" fill="#176b92" fill-opacity=".56"/>
+  <circle cx="491" cy="338" r="13" fill="#176b92" fill-opacity=".56"/>
+  <circle cx="528" cy="338" r="13" fill="#176b92" fill-opacity=".38"/>
+  <!-- %%%%26.04.2026%%%%%%% lightweight academic illustration -->
+</svg>
