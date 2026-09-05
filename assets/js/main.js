@@ -581,11 +581,22 @@
     publicationCards.forEach((card) => {
       const heading = card.querySelector('h3')
       const authors = card.querySelector('ul li:first-child')
-      const titleNode = heading
-        ? [...heading.childNodes].find((node) => node.nodeType === Node.TEXT_NODE && node.textContent.trim())
-        : null
-      const title = titleNode ? titleNode.textContent.replace(/\s+/g, ' ').trim() : ''
       const primarySource = card.querySelector('.btn-publisher, .btn-arxive, .btn-donwnload')
+      // %%%%26.04.2026%%%%%%% preserve inline mathematical markup inside publication title links
+      const existingTitleLink = heading ? heading.querySelector(':scope > .publication-title-link') : null
+      const headingNodes = heading ? [...heading.childNodes] : []
+      const primarySourceIndex = primarySource ? headingNodes.indexOf(primarySource) : -1
+      const titleNodes = existingTitleLink
+        ? [existingTitleLink]
+        : primarySourceIndex > 0
+          ? headingNodes.slice(0, primarySourceIndex)
+          : []
+      const title = titleNodes
+        .map((node) => node.textContent)
+        .join('')
+        .replace(/\s+/g, ' ')
+        .trim()
+      // %%%%26.04.2026%%%%%%% preserve inline mathematical markup inside publication title links
       const type = Object.entries(typeClasses).find(([, className]) => card.querySelector(`.${className}`))?.[0] || 'other'
 
       card.dataset.publicationType = type
@@ -602,16 +613,27 @@
         actionLink.rel = 'noopener noreferrer'
       })
 
-      if (heading && titleNode && primarySource && !heading.querySelector('.publication-title-link')) {
+      // %%%%26.04.2026%%%%%%% wrap the complete title, including subscript elements, in one source link
+      if (heading && titleNodes.length && primarySource && !existingTitleLink) {
+        const firstTextNode = titleNodes.find((node) => node.nodeType === Node.TEXT_NODE)
+        const lastTextNode = [...titleNodes].reverse().find((node) => node.nodeType === Node.TEXT_NODE)
+
+        if (firstTextNode) {
+          firstTextNode.textContent = firstTextNode.textContent.replace(/^[\s\u00a0]+/, '')
+        }
+        if (lastTextNode) {
+          lastTextNode.textContent = lastTextNode.textContent.replace(/[\s\u00a0]+$/, '')
+        }
+
         const titleLink = document.createElement('a')
         titleLink.className = 'publication-title-link'
         titleLink.href = primarySource.href
         titleLink.target = '_blank'
         titleLink.rel = 'noopener noreferrer'
-        titleLink.textContent = title
-        heading.insertBefore(titleLink, titleNode)
-        titleNode.remove()
+        heading.insertBefore(titleLink, primarySource)
+        titleNodes.forEach((node) => titleLink.append(node))
       }
+      // %%%%26.04.2026%%%%%%% wrap the complete title, including subscript elements, in one source link
 
       // %%%%26.04.2026%%%%%%% keep publication actions separate from long titles
       const publicationActions = heading
