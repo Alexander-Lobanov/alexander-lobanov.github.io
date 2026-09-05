@@ -12,6 +12,15 @@ $outputPath = Join-Path $projectRoot $OutputDir
 
 # %%%%26.04.2026%%%%%%% Keep map locations synchronized with the Talks table
 $nodeCommand = Get-Command node -ErrorAction Stop
+
+# %%%%26.04.2026%%%%%%% Synchronize the homepage publication total with the Publications page
+$publicationCountSync = Join-Path $scriptRoot "sync-publication-count.js"
+& $nodeCommand.Source $publicationCountSync
+if ($LASTEXITCODE -ne 0) {
+  throw "Failed to synchronize the homepage publication count."
+}
+# %%%%26.04.2026%%%%%%% Synchronize the homepage publication total with the Publications page
+
 $talksDataGenerator = Join-Path $scriptRoot "generate-talks-map-data.js"
 & $nodeCommand.Source $talksDataGenerator
 if ($LASTEXITCODE -ne 0) {
