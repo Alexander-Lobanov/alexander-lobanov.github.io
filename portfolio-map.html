@@ -16,7 +16,9 @@
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/css/style.css?v=20260905-navigation-map5" rel="stylesheet">
+  <!-- %%%%26.04.2026%%%%%%% locations toggle styling and mobile zoom controls cache refresh -->
+  <link href="assets/css/style.css?v=20260913-mapfix15" rel="stylesheet">
+  <!-- %%%%26.04.2026%%%%%%% locations toggle styling and mobile zoom controls cache refresh -->
 </head>
 
 <body class="academic-map-page">
@@ -126,30 +128,91 @@
 
         <div class="academic-map-layout">
           <div class="academic-map-canvas-card">
-            <div class="academic-map-canvas" data-academic-map-canvas aria-label="Interactive map of academic activity">
-              <!-- %%%%26.04.2026%%%%%%% expanded Natural Earth map for 2026 East Asia locations -->
-              <img src="assets/img/academic-map-region.svg?v=20260905-east-asia" class="academic-map-backdrop" width="1200" height="600" alt="">
-              <!-- %%%%26.04.2026%%%%%%% expanded Natural Earth map for 2026 East Asia locations -->
-              <div class="academic-map-marker-layer" data-academic-map-marker-layer></div>
-              <div class="academic-map-popup-card" data-academic-map-popup hidden>
-                <button type="button" class="academic-map-popup-close" data-academic-map-popup-close aria-label="Close location details">
-                  <i class="bx bx-x" aria-hidden="true"></i>
-                </button>
-                <div class="academic-map-popup-content" data-academic-map-popup-content></div>
+            <!-- %%%%26.04.2026%%%%%%% map legend and interaction guidance -->
+            <div class="academic-map-toolbar">
+              <div class="academic-map-legend" aria-label="Map marker legend">
+                <span><i class="academic-map-legend-dot academic-map-legend-dot--talk" aria-hidden="true"></i>Talks</span>
+                <span><i class="academic-map-legend-dot academic-map-legend-dot--event" aria-hidden="true"></i>Schools &amp; research visits</span>
+                <span><i class="academic-map-legend-dot academic-map-legend-dot--cluster" aria-hidden="true"></i>Grouped locations</span>
               </div>
+              <!-- %%%%26.04.2026%%%%%%% desktop and touch zoom guidance -->
+              <p class="academic-map-input-hint"><i class="bx bx-mouse" aria-hidden="true"></i><span><kbd>Ctrl</kbd> + scroll or pinch to zoom</span></p>
+              <!-- %%%%26.04.2026%%%%%%% desktop and touch zoom guidance -->
             </div>
-            <p class="academic-map-status" data-academic-map-status role="status" aria-live="polite">Loading locations from Talks...</p>
+            <!-- %%%%26.04.2026%%%%%%% map legend and interaction guidance -->
+
+            <div class="academic-map-canvas" data-academic-map-canvas tabindex="0" aria-label="Interactive map of academic activity. Use plus and minus to zoom, drag to move, and zero to fit all locations.">
+              <!-- %%%%26.04.2026%%%%%%% crisp viewBox-driven vector map stage and controls -->
+              <div class="academic-map-stage" data-academic-map-stage>
+                <!-- %%%%26.04.2026%%%%%%% synchronize Ukraine and Belarus label visibility -->
+                <div class="academic-map-backdrop" data-academic-map-backdrop data-map-source="assets/img/academic-map-region.svg?v=20260913-label-safe2" aria-hidden="true">
+                  <img src="assets/img/academic-map-region.svg?v=20260913-label-safe2" class="academic-map-backdrop-fallback" width="1200" height="600" alt="" draggable="false">
+                </div>
+                <!-- %%%%26.04.2026%%%%%%% synchronize Ukraine and Belarus label visibility -->
+                <div class="academic-map-marker-layer" data-academic-map-marker-layer></div>
+              </div>
+              <div class="academic-map-controls" aria-label="Map zoom controls">
+                <button type="button" data-academic-map-zoom-in aria-label="Zoom in" title="Zoom in">
+                  <i class="bx bx-plus" aria-hidden="true"></i>
+                </button>
+                <button type="button" data-academic-map-zoom-out aria-label="Zoom out" title="Zoom out">
+                  <i class="bx bx-minus" aria-hidden="true"></i>
+                </button>
+                <button type="button" data-academic-map-reset aria-label="Fit all locations" title="Fit all locations">
+                  <i class="bx bx-expand" aria-hidden="true"></i>
+                </button>
+              </div>
+              <!-- %%%%26.04.2026%%%%%%% crisp viewBox-driven vector map stage and controls -->
+            </div>
+
+            <!-- %%%%26.04.2026%%%%%%% unobtrusive map status below the geographic canvas -->
+            <div class="academic-map-caption">
+              <p class="academic-map-status" data-academic-map-status role="status" aria-live="polite">Loading locations from Talks...</p>
+              <span class="academic-map-zoom-readout" data-academic-map-zoom-level aria-live="polite">100%</span>
+            </div>
+            <!-- %%%%26.04.2026%%%%%%% unobtrusive map status below the geographic canvas -->
           </div>
 
+          <!-- %%%%26.04.2026%%%%%%% selected location details moved outside the map -->
+          <section class="academic-map-selection-card" data-academic-map-popup hidden aria-label="Selected location details">
+            <div class="academic-map-selection-heading">
+              <span class="academic-map-selection-icon" aria-hidden="true"><i class="bx bx-map-pin"></i></span>
+              <div>
+                <span>Selected location</span>
+                <strong>Academic activity</strong>
+              </div>
+            </div>
+            <button type="button" class="academic-map-popup-close" data-academic-map-popup-close aria-label="Close location details">
+              <i class="bx bx-x" aria-hidden="true"></i>
+            </button>
+            <div class="academic-map-popup-content" data-academic-map-popup-content></div>
+          </section>
+          <!-- %%%%26.04.2026%%%%%%% selected location details moved outside the map -->
+
+          <!-- %%%%26.04.2026%%%%%%% searchable collapsible locations panel -->
           <aside class="academic-map-locations-card" aria-label="Map locations">
             <div class="academic-map-locations-heading">
-              <h3>Locations <span data-academic-map-location-count>20</span></h3>
-              <p>Select a city to highlight it and view its academic events.</p>
+              <div>
+                <h3>Locations <span data-academic-map-location-count>20</span></h3>
+                <p>Search or select a city to view its academic activity.</p>
+              </div>
+              <button type="button" class="academic-map-locations-toggle" data-academic-map-locations-toggle aria-expanded="false" aria-controls="academic-map-locations-panel">
+                <span>Browse locations</span>
+                <i class="bx bx-chevron-down" aria-hidden="true"></i>
+              </button>
             </div>
-            <div class="academic-map-locations" data-academic-map-locations>
-              <p class="academic-map-empty">Loading locations...</p>
+            <div class="academic-map-locations-panel" id="academic-map-locations-panel" data-academic-map-locations-panel hidden>
+              <label class="academic-map-location-search">
+                <i class="bx bx-search" aria-hidden="true"></i>
+                <span class="visually-hidden">Search locations</span>
+                <input type="search" data-academic-map-location-search placeholder="Search by city" autocomplete="off">
+              </label>
+              <div class="academic-map-locations" data-academic-map-locations>
+                <p class="academic-map-empty">Loading locations...</p>
+              </div>
             </div>
           </aside>
+          <!-- %%%%26.04.2026%%%%%%% searchable collapsible locations panel -->
         </div>
 
         <div class="academic-map-note">
@@ -646,7 +709,9 @@
 ]
   </script>
   <!-- %%%%26.04.2026%%%%%%% embedded Talks map data end -->
-  <script src="assets/js/main.js?v=20260905-navigation-map10"></script>
+  <!-- %%%%26.04.2026%%%%%%% viewBox zoom and responsive map behavior with refreshed browser cache -->
+  <script src="assets/js/main.js?v=20260913-mapfix13"></script>
+  <!-- %%%%26.04.2026%%%%%%% viewBox zoom and responsive map behavior with refreshed browser cache -->
 </body>
 
 </html>

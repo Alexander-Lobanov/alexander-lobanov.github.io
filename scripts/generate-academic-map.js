@@ -24,6 +24,15 @@ const bounds = {
 const width = 1200
 const height = 600
 
+// %%%%26.04.2026%%%%%%% escape Natural Earth labels before writing SVG attributes and text
+const escapeXml = (value) => String(value)
+  .replace(/&/g, '&amp;')
+  .replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;')
+  .replace(/'/g, '&apos;')
+// %%%%26.04.2026%%%%%%% escape Natural Earth labels before writing SVG attributes and text
+
 const clipEdge = (points, isInside, intersection) => {
   if (!points.length) return []
 
@@ -181,8 +190,42 @@ const countryPaths = geoJson.features.map((feature) => {
   if (!pathData) return ''
 
   const colorIndex = Number(feature.properties?.MAPCOLOR7 || 1)
-  return '    <path class="map-country map-color-' + colorIndex + '" d="' + pathData + '"/>'
+  // %%%%26.04.2026%%%%%%% retain country identity for filtered visited-country highlighting
+  const countryName = escapeXml(feature.properties?.ADMIN || feature.properties?.NAME_EN || feature.properties?.NAME || '')
+  return '    <path class="map-country map-color-' + colorIndex + '" data-country="' + countryName + '" d="' + pathData + '"/>'
+  // %%%%26.04.2026%%%%%%% retain country identity for filtered visited-country highlighting
 }).filter(Boolean)
+
+// %%%%26.04.2026%%%%%%% progressive country labels revealed as the vector map zooms
+const countryLabels = geoJson.features.map((feature) => {
+  const properties = feature.properties || {}
+  const longitude = Number(properties.LABEL_X)
+  const latitude = Number(properties.LABEL_Y)
+  if (
+    properties.ADMIN !== properties.SOVEREIGNT
+    ||
+    !Number.isFinite(longitude)
+    || !Number.isFinite(latitude)
+    || longitude < bounds.minLongitude
+    || longitude > bounds.maxLongitude
+    || latitude < bounds.minLatitude
+    || latitude > bounds.maxLatitude
+  ) return ''
+
+  const countryName = properties.ADMIN || properties.NAME_EN || properties.NAME
+  if (!countryName) return ''
+  const labelRank = Number(properties.LABELRANK || 6)
+  // %%%%26.04.2026%%%%%%% show Ukraine at the same zoom threshold as Belarus
+  const labelClass = countryName === 'Ukraine'
+    ? 'standard'
+    : labelRank <= 3 ? 'major' : labelRank <= 5 ? 'standard' : 'minor'
+  // %%%%26.04.2026%%%%%%% show Ukraine at the same zoom threshold as Belarus
+  const [x, y] = project([longitude, latitude])
+  return '    <text class="map-country-label map-country-label--' + labelClass
+    + '" data-country="' + escapeXml(countryName) + '" x="' + x.toFixed(1) + '" y="' + y.toFixed(1)
+    + '">' + escapeXml(properties.NAME_EN || countryName) + '</text>'
+}).filter(Boolean)
+// %%%%26.04.2026%%%%%%% progressive country labels revealed as the vector map zooms
 
 const longitudeLines = [0, 30, 60, 90, 120].map((longitude) => {
   const [x] = project([longitude, bounds.minLatitude])
@@ -195,37 +238,44 @@ const latitudeLines = [20, 30, 40, 50, 60].map((latitude) => {
 
 const svg = [
   '<!-- %%%%26.04.2026%%%%%%% Accurate lightweight map generated from Natural Earth ' + sourceScale + ' -->',
-  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" preserveAspectRatio="none" role="img" aria-labelledby="map-title map-description">',
+  '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="map-title map-description">',
   '  <title id="map-title">Europe, North Africa and Asia</title>',
   '  <desc id="map-description">Geographically accurate regional map based on public-domain Natural Earth country boundaries.</desc>',
   '  <metadata>Derived from Natural Earth ' + sourceScale + ' Admin 0 Countries, public domain.</metadata>',
   '  <defs>',
   '    <linearGradient id="map-water" x1="0" y1="0" x2="1" y2="1">',
-  '      <stop offset="0" stop-color="#d9edf3"/>',
-  '      <stop offset="0.52" stop-color="#eaf5f7"/>',
-  '      <stop offset="1" stop-color="#cfe6ec"/>',
+  '      <stop offset="0" stop-color="#dceff4"/>',
+  '      <stop offset="0.52" stop-color="#f1f9fa"/>',
+  '      <stop offset="1" stop-color="#d7eaf0"/>',
   '    </linearGradient>',
   '    <filter id="map-shadow" x="-10%" y="-10%" width="120%" height="120%">',
-  '      <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#5e8292" flood-opacity=".18"/>',
+  '      <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#173b6c" flood-opacity=".13"/>',
   '    </filter>',
   '  </defs>',
   '  <rect width="1200" height="600" fill="url(#map-water)"/>',
-  '  <g fill="none" stroke="#93becb" stroke-width="1" stroke-dasharray="4 8" opacity=".3">',
+  '  <g class="map-grid" fill="none" stroke="#6ea8ba" stroke-width="1" stroke-dasharray="4 8" opacity=".22">',
   ...longitudeLines,
   ...latitudeLines,
   '  </g>',
-  '  <g fill-rule="evenodd" stroke="#8eabb0" stroke-width="1.1" stroke-linejoin="round" filter="url(#map-shadow)">',
+  '  <g class="map-countries" fill-rule="evenodd" stroke="#89a6af" stroke-width="1.1" stroke-linejoin="round" filter="url(#map-shadow)">',
   ...countryPaths,
   '  </g>',
-  '  <g fill="#5c7d88" font-family="Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2.4" opacity=".68">',
+  // %%%%26.04.2026%%%%%%% keep generated fallback labels hidden until interactive geometry is ready
+  '  <!-- %%%%26.04.2026%%%%%%% labels stay hidden in the unmanaged image fallback -->',
+  '  <g class="map-region-labels" fill="#173b6c" font-family="Poppins, sans-serif" font-size="13" font-weight="700" letter-spacing="2.4" opacity="0">',
   '    <text x="173" y="228">EUROPE</text>',
   '    <text x="660" y="315">CENTRAL ASIA</text>',
   '    <text x="876" y="440">SOUTH ASIA</text>',
   '    <text x="205" y="520">NORTH AFRICA</text>',
   '  </g>',
+  '  <g class="map-country-labels" fill="#173b6c" font-family="Poppins, sans-serif" font-size="12" font-weight="700" text-anchor="middle" opacity="0">',
+  ...countryLabels,
+  '  </g>',
+  '  <!-- %%%%26.04.2026%%%%%%% labels stay hidden in the unmanaged image fallback -->',
+  // %%%%26.04.2026%%%%%%% keep generated fallback labels hidden until interactive geometry is ready
   '  <style>',
-  '    .map-color-1{fill:#eff5e9}.map-color-2{fill:#e8f1e5}.map-color-3{fill:#f4f4e8}.map-color-4{fill:#e5f0eb}',
-  '    .map-color-5{fill:#f1f5ec}.map-color-6{fill:#e8f3ef}.map-color-7{fill:#f3f0e4}',
+  '    .map-color-1{fill:#fbf9ef}.map-color-2{fill:#f3f7ef}.map-color-3{fill:#fffaf0}.map-color-4{fill:#edf5f1}',
+  '    .map-color-5{fill:#f7f7ed}.map-color-6{fill:#eef6f2}.map-color-7{fill:#fff5dd}',
   '  </style>',
   '</svg>',
   '<!-- %%%%26.04.2026%%%%%%% Accurate lightweight map generated from Natural Earth ' + sourceScale + ' -->',

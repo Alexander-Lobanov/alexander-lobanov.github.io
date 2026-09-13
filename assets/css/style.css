@@ -2202,7 +2202,9 @@ section {
 
 .academic-map-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.75fr) minmax(270px, 0.75fr);
+  /* %%%%26.04.2026%%%%%%% give the geographic canvas its natural wide presentation */
+  grid-template-columns: minmax(0, 1fr);
+  /* %%%%26.04.2026%%%%%%% give the geographic canvas its natural wide presentation */
   gap: 20px;
   align-items: stretch;
 }
@@ -2222,19 +2224,52 @@ section {
 }
 
 .academic-map-canvas {
+  --academic-map-inverse-zoom: 1;
   position: relative;
   width: 100%;
-  height: 570px;
+  height: clamp(440px, 44vw, 520px);
   overflow: hidden;
   background:
     radial-gradient(circle at 35% 42%, rgba(20, 157, 221, 0.15), transparent 38%),
     #e8f2f5;
+  outline: none;
+  touch-action: pan-y;
+}
+
+/* %%%%26.04.2026%%%%%%% interactive map pan and zoom presentation */
+.academic-map-canvas:focus-visible {
+  box-shadow: inset 0 0 0 3px rgba(20, 157, 221, 0.42);
+}
+
+.academic-map-canvas.is-zoomed {
+  cursor: grab;
+}
+
+.academic-map-canvas.is-dragging {
+  cursor: grabbing;
+}
+
+.academic-map-stage {
+  position: absolute;
+  inset: 0;
+  transform: translate3d(0, 0, 0) scale(1);
+  transform-origin: 50% 50%;
+  transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.academic-map-canvas.is-dragging .academic-map-stage {
+  transition: none;
 }
 
 .academic-map-backdrop {
+  position: absolute;
+  inset: 0;
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: fill;
+  pointer-events: none;
   user-select: none;
 }
 
@@ -2243,7 +2278,61 @@ section {
   inset: 0;
 }
 
+.academic-map-controls {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 12;
+  display: inline-grid;
+  grid-template-columns: 38px minmax(58px, auto) 38px;
+  overflow: hidden;
+  border: 1px solid rgba(143, 183, 199, 0.86);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 8px 22px rgba(23, 59, 108, 0.16);
+}
+
+.academic-map-controls button {
+  display: grid;
+  place-items: center;
+  min-height: 38px;
+  padding: 0;
+  border: 0;
+  border-right: 1px solid #d8e7ed;
+  color: #173b6c;
+  background: transparent;
+  font-size: 19px;
+  transition: color 0.18s ease, background 0.18s ease;
+}
+
+.academic-map-controls button:last-child {
+  border-right: 0;
+}
+
+.academic-map-controls button:hover,
+.academic-map-controls button:focus-visible {
+  color: #087fab;
+  background: #eaf7fb;
+  outline: none;
+}
+
+.academic-map-controls button:disabled {
+  color: #9babb4;
+  cursor: not-allowed;
+  background: #f4f7f8;
+}
+
+.academic-map-controls .academic-map-zoom-level {
+  padding: 0 9px;
+  font-family: "Poppins", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+/* %%%%26.04.2026%%%%%%% interactive map pan and zoom presentation */
+
 .academic-map-marker {
+  --academic-map-marker-active-scale: 1;
   position: absolute;
   display: grid;
   place-items: center;
@@ -2259,19 +2348,21 @@ section {
     0 0 0 5px rgba(20, 157, 221, 0.14);
   font-size: 10px;
   font-weight: 800;
-  transform: translate(-50%, -50%);
+  transform:
+    translate(-50%, -50%)
+    scale(var(--academic-map-marker-active-scale));
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .academic-map-marker:hover,
 .academic-map-marker:focus-visible,
 .academic-map-marker.is-active {
+  --academic-map-marker-active-scale: 1.18;
   z-index: 3;
   outline: none;
   box-shadow:
     0 7px 17px rgba(23, 59, 108, 0.34),
     0 0 0 8px rgba(20, 157, 221, 0.2);
-  transform: translate(-50%, -50%) scale(1.18);
 }
 
 .academic-map-marker--online {
@@ -2348,7 +2439,7 @@ section {
 .academic-map-locations-card {
   display: flex;
   flex-direction: column;
-  max-height: 570px;
+  max-height: none;
 }
 
 .academic-map-locations-heading {
@@ -2356,7 +2447,8 @@ section {
   border-bottom: 1px solid #e0ebf0;
 }
 
-.academic-map-locations-heading span {
+/* %%%%26.04.2026%%%%%%% keep the location count badge styling off the drawer toggle label */
+.academic-map-locations-heading h3 > span {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2369,6 +2461,7 @@ section {
   background: #173b6c;
   font-size: 12px;
 }
+/* %%%%26.04.2026%%%%%%% keep the location count badge styling off the drawer toggle label */
 
 .academic-map-locations-heading h3 {
   margin: 0;
@@ -2385,6 +2478,10 @@ section {
 
 .academic-map-locations {
   display: grid;
+  /* %%%%26.04.2026%%%%%%% keep locations compact below the wider map */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-height: 320px;
+  /* %%%%26.04.2026%%%%%%% keep locations compact below the wider map */
   gap: 8px;
   padding: 13px;
   overflow-y: auto;
@@ -2598,11 +2695,895 @@ section {
 
 @media (prefers-reduced-motion: reduce) {
   .sidebar-map-card,
+  .academic-map-stage,
   .academic-map-marker,
   .academic-map-location {
     transition: none;
   }
 }
+
+/* %%%%26.04.2026%%%%%%% cohesive clustered academic map presentation */
+.academic-map-page {
+  --academic-map-navy: #173b6c;
+  --academic-map-blue: #149ddd;
+  --academic-map-blue-deep: #087fab;
+  --academic-map-gold: #f0bd4d;
+  --academic-map-ivory: #fbfaf4;
+  --academic-map-line: #c9dfe7;
+}
+
+.academic-map-layout {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
+}
+
+.academic-map-canvas-card,
+.academic-map-selection-card,
+.academic-map-locations-card {
+  border-color: rgba(167, 199, 211, 0.72);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 14px 34px rgba(23, 59, 108, 0.09);
+}
+
+.academic-map-toolbar,
+.academic-map-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(241, 249, 251, 0.96));
+}
+
+.academic-map-toolbar {
+  border-bottom: 1px solid #dce9ee;
+}
+
+.academic-map-caption {
+  border-top: 1px solid #dce9ee;
+}
+
+.academic-map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px 16px;
+  color: #4f6879;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.academic-map-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.academic-map-legend-dot {
+  width: 10px;
+  height: 10px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(23, 59, 108, 0.18);
+}
+
+.academic-map-legend-dot--talk {
+  background: var(--academic-map-blue);
+}
+
+.academic-map-legend-dot--event {
+  background: var(--academic-map-gold);
+}
+
+.academic-map-legend-dot--cluster {
+  background: var(--academic-map-navy);
+}
+
+.academic-map-input-hint {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  color: #687d8a;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.academic-map-input-hint i {
+  color: var(--academic-map-blue-deep);
+  font-size: 16px;
+}
+
+.academic-map-input-hint kbd {
+  padding: 2px 5px;
+  border: 1px solid #cadde5;
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  color: var(--academic-map-navy);
+  background: #ffffff;
+  box-shadow: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 9px;
+}
+
+.academic-map-canvas {
+  aspect-ratio: 2 / 1;
+  height: auto !important;
+  min-height: 0;
+  background:
+    radial-gradient(circle at 74% 28%, rgba(240, 189, 77, 0.13), transparent 24%),
+    linear-gradient(145deg, #e6f5f8, #f4fafb 56%, #dceef3);
+  touch-action: pan-y;
+}
+
+.academic-map-stage {
+  top: 50%;
+  right: auto;
+  bottom: auto;
+  left: 50%;
+  width: 100%;
+  min-width: 0;
+  height: auto;
+  aspect-ratio: 2 / 1;
+  transform: translate(-50%, -50%);
+  transition: none;
+  will-change: auto;
+}
+
+.academic-map-backdrop {
+  overflow: hidden;
+  object-fit: initial;
+}
+
+/* %%%%26.04.2026%%%%%%% vector viewBox rendering, visited countries and progressive labels */
+.academic-map-backdrop-fallback,
+.academic-map-vector {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* %%%%26.04.2026%%%%%%% allow the fallback SVG to follow the active geographic viewport */
+.academic-map-backdrop-fallback {
+  max-width: none;
+  object-fit: fill;
+}
+/* %%%%26.04.2026%%%%%%% allow the fallback SVG to follow the active geographic viewport */
+
+.academic-map-vector {
+  overflow: hidden;
+}
+
+.academic-map-backdrop .map-grid path,
+.academic-map-backdrop .map-country {
+  vector-effect: non-scaling-stroke;
+}
+
+.academic-map-backdrop .map-country {
+  transition: fill 0.28s ease, stroke 0.28s ease;
+}
+
+.academic-map-backdrop .map-country.is-visited-talk {
+  fill: #d9eff5;
+  stroke: #5a9eb4;
+}
+
+.academic-map-backdrop .map-country.is-visited-event {
+  fill: #fff0c9;
+  stroke: #c79c3d;
+}
+
+.academic-map-backdrop .map-country.is-visited-mixed {
+  fill: #e7f0dd;
+  stroke: #6696a3;
+}
+
+.academic-map-backdrop .map-region-labels,
+.academic-map-backdrop .map-country-label {
+  pointer-events: none;
+}
+
+/* %%%%26.04.2026%%%%%%% country labels switch instantly so old and new labels never overlap */
+.academic-map-backdrop .map-region-labels {
+  opacity: 0.58;
+  transition: opacity 0.22s ease;
+}
+
+.academic-map-backdrop .map-country-label {
+  transition: none;
+}
+/* %%%%26.04.2026%%%%%%% country labels switch instantly so old and new labels never overlap */
+
+.academic-map-backdrop .map-country-label {
+  opacity: 0;
+  stroke: rgba(255, 255, 255, 0.94);
+  /* %%%%26.04.2026%%%%%%% labels shrink progressively instead of growing with the map */
+  stroke-width: var(--academic-map-country-label-stroke, 1.5px);
+  paint-order: stroke fill;
+  font-size: var(--academic-map-country-label-size, 13px);
+  letter-spacing: var(--academic-map-country-label-spacing, 0.2px);
+  /* %%%%26.04.2026%%%%%%% labels shrink progressively instead of growing with the map */
+}
+
+.academic-map-canvas.has-country-labels .map-region-labels {
+  opacity: 0;
+}
+
+.academic-map-canvas.has-country-labels .map-country-label--major,
+.academic-map-canvas.has-country-labels .map-country-label.is-visited,
+.academic-map-canvas.has-detailed-country-labels .map-country-label--standard,
+.academic-map-canvas.has-minor-country-labels .map-country-label--minor {
+  opacity: 0.78;
+}
+
+.academic-map-canvas.has-country-labels .map-country-label.is-visited {
+  fill: #0a6689;
+  opacity: 0.94;
+}
+
+/* %%%%26.04.2026%%%%%%% hide lower-priority country names when their screen bounds collide */
+.academic-map-backdrop .map-country-label.is-collision-hidden {
+  opacity: 0 !important;
+}
+/* %%%%26.04.2026%%%%%%% hide lower-priority country names when their screen bounds collide */
+/* %%%%26.04.2026%%%%%%% vector viewBox rendering, visited countries and progressive labels */
+
+.academic-map-controls {
+  top: 14px;
+  right: 14px;
+  left: auto;
+  grid-template-columns: 44px;
+  border-color: rgba(151, 184, 197, 0.82);
+  border-radius: 13px;
+  box-shadow: 0 10px 24px rgba(23, 59, 108, 0.16);
+}
+
+.academic-map-controls button {
+  width: 44px;
+  min-height: 44px;
+  border-right: 0;
+  border-bottom: 1px solid #d8e7ed;
+  font-size: 20px;
+}
+
+.academic-map-controls button:last-child {
+  border-bottom: 0;
+}
+
+.academic-map-status {
+  position: static;
+  max-width: none;
+  padding: 0;
+  border: 0;
+  color: #536c7b;
+  background: transparent;
+  box-shadow: none;
+  font-size: 11px;
+}
+
+.academic-map-zoom-readout {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  padding: 5px 9px;
+  border: 1px solid #d3e4ea;
+  border-radius: 999px;
+  color: var(--academic-map-navy);
+  background: #ffffff;
+  font-family: "Poppins", sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.academic-map-marker {
+  width: 31px;
+  height: 31px;
+  border-width: 2px;
+  background: var(--academic-map-blue);
+  box-shadow:
+    0 5px 13px rgba(23, 59, 108, 0.22),
+    0 0 0 3px rgba(20, 157, 221, 0.13);
+  font-size: 10px;
+  transform: translate(-50%, -50%) scale(var(--academic-map-marker-active-scale));
+}
+
+/* %%%%26.04.2026%%%%%%% city labels, marker tooltips and truthful spider connectors */
+.academic-map-marker.is-outside-view {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.academic-map-marker-count {
+  position: relative;
+  z-index: 2;
+}
+
+.academic-map-leader-line {
+  position: absolute;
+  z-index: 1;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(23, 59, 108, 0.34), rgba(20, 157, 221, 0.68));
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.42);
+  transform-origin: 0 50%;
+  pointer-events: none;
+}
+
+.academic-map-city-label,
+.academic-map-marker-tooltip {
+  position: absolute;
+  z-index: 5;
+  width: max-content;
+  max-width: 190px;
+  border: 1px solid rgba(161, 194, 206, 0.8);
+  color: var(--academic-map-navy);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 6px 16px rgba(23, 59, 108, 0.13);
+  pointer-events: none;
+}
+
+.academic-map-city-label {
+  top: calc(100% + 6px);
+  left: 50%;
+  display: none;
+  padding: 3px 7px;
+  border-radius: 999px;
+  font-size: 9px;
+  font-weight: 800;
+  line-height: 1.25;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.academic-map-canvas.has-city-labels .academic-map-marker:not(.academic-map-marker--cluster) .academic-map-city-label {
+  display: block;
+}
+
+.academic-map-marker[data-label-side="north"] .academic-map-city-label {
+  top: auto;
+  bottom: calc(100% + 6px);
+}
+
+.academic-map-marker[data-label-side="east"] .academic-map-city-label {
+  top: 50%;
+  left: calc(100% + 7px);
+  transform: translateY(-50%);
+}
+
+.academic-map-marker[data-label-side="west"] .academic-map-city-label {
+  top: 50%;
+  right: calc(100% + 7px);
+  left: auto;
+  transform: translateY(-50%);
+}
+
+.academic-map-marker-tooltip {
+  bottom: calc(100% + 10px);
+  left: 50%;
+  display: grid;
+  min-width: 132px;
+  gap: 2px;
+  padding: 8px 10px;
+  border-radius: 9px;
+  opacity: 0;
+  text-align: left;
+  transform: translate(-50%, 5px);
+  transition: opacity 0.16s ease, transform 0.16s ease;
+}
+
+.academic-map-marker[data-tooltip-side="below"] .academic-map-marker-tooltip {
+  top: calc(100% + 10px);
+  bottom: auto;
+  transform: translate(-50%, -5px);
+}
+
+.academic-map-marker-tooltip strong {
+  font-size: 10px;
+  line-height: 1.35;
+}
+
+.academic-map-marker-tooltip small {
+  color: #687f8c;
+  font-size: 8px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.academic-map-marker:focus-visible .academic-map-marker-tooltip {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.academic-map-marker:focus-visible .academic-map-city-label {
+  opacity: 0;
+}
+
+/* %%%%26.04.2026%%%%%%% avoid sticky hover tooltips after a cluster tap on touch screens */
+@media (hover: hover) {
+  .academic-map-marker:hover .academic-map-marker-tooltip {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  .academic-map-marker:hover .academic-map-city-label {
+    opacity: 0;
+  }
+}
+/* %%%%26.04.2026%%%%%%% avoid sticky hover tooltips after a cluster tap on touch screens */
+/* %%%%26.04.2026%%%%%%% city labels, marker tooltips and truthful spider connectors */
+
+.academic-map-marker--talk {
+  color: #ffffff;
+  background: var(--academic-map-blue);
+}
+
+.academic-map-marker--event {
+  color: #4d370a;
+  background: var(--academic-map-gold);
+  box-shadow:
+    0 5px 13px rgba(111, 76, 11, 0.18),
+    0 0 0 3px rgba(240, 189, 77, 0.16);
+}
+
+.academic-map-marker--mixed {
+  color: #ffffff;
+  background: conic-gradient(var(--academic-map-blue) 0 50%, var(--academic-map-gold) 50% 100%);
+}
+
+.academic-map-marker--online {
+  border-style: dashed;
+}
+
+.academic-map-marker--cluster {
+  width: 38px;
+  height: 38px;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  background: var(--academic-map-navy);
+  box-shadow:
+    0 8px 18px rgba(23, 59, 108, 0.25),
+    0 0 0 4px rgba(240, 189, 77, 0.22);
+  font-size: 11px;
+}
+
+.academic-map-marker:hover,
+.academic-map-marker:focus-visible,
+.academic-map-marker.is-active {
+  --academic-map-marker-active-scale: 1.08;
+  box-shadow:
+    0 8px 18px rgba(23, 59, 108, 0.27),
+    0 0 0 5px rgba(240, 189, 77, 0.42);
+}
+
+.academic-map-selection-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(170px, 0.28fr) minmax(0, 1fr);
+  gap: 20px;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.academic-map-selection-card::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 4px;
+  background: linear-gradient(var(--academic-map-blue), var(--academic-map-gold));
+  content: "";
+}
+
+.academic-map-selection-card[hidden] {
+  display: none;
+}
+
+.academic-map-selection-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding-right: 10px;
+}
+
+.academic-map-selection-icon {
+  display: grid;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border-radius: 12px;
+  color: var(--academic-map-navy);
+  background: #f8d77f;
+  font-size: 20px;
+}
+
+.academic-map-selection-heading div {
+  display: grid;
+  gap: 3px;
+}
+
+.academic-map-selection-heading span {
+  color: #748995;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.academic-map-selection-heading strong {
+  color: var(--academic-map-navy);
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+}
+
+.academic-map-selection-card .academic-map-popup-close {
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+}
+
+.academic-map-popup-content {
+  min-width: 0;
+  padding: 0 34px 0 0;
+}
+
+.academic-map-popup {
+  grid-template-columns: minmax(150px, 0.32fr) minmax(0, 1fr);
+  gap: 18px;
+  min-width: 0;
+}
+
+.academic-map-popup-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.academic-map-popup-summary > strong {
+  color: var(--academic-map-navy);
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.academic-map-popup-summary > span {
+  color: #647b89;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.academic-map-popup-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 2px;
+}
+
+.academic-map-popup-badge {
+  padding: 4px 7px;
+  border-radius: 999px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.academic-map-popup-badge--talk {
+  color: #0873a0;
+  background: #e3f5fb;
+}
+
+.academic-map-popup-badge--event {
+  color: #71500c;
+  background: #fff2ce;
+}
+
+.academic-map-popup-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: auto;
+  color: var(--academic-map-blue-deep);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.academic-map-popup ul {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  border-top: 0;
+}
+
+.academic-map-popup li {
+  gap: 4px;
+  padding: 10px 11px;
+  border: 1px solid #dce9ee;
+  border-radius: 10px;
+  background: #f8fbfc;
+}
+
+.academic-map-popup time {
+  color: #7b8f9a;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.academic-map-popup a,
+.academic-map-popup li > span {
+  color: #245674;
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.academic-map-locations-card {
+  max-height: none;
+}
+
+.academic-map-locations-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 15px 17px;
+  border-bottom: 0;
+}
+
+.academic-map-locations-toggle {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 7px;
+  min-height: 38px;
+  padding: 7px 12px;
+  border: 1px solid #c9dfe7;
+  border-radius: 10px;
+  color: var(--academic-map-navy);
+  background: #f5fafb;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.academic-map-locations-toggle i {
+  color: var(--academic-map-blue-deep);
+  font-size: 18px;
+  transition: transform 0.2s ease;
+}
+
+.academic-map-locations-card.is-open .academic-map-locations-toggle i {
+  transform: rotate(180deg);
+}
+
+.academic-map-locations-panel {
+  min-width: 0;
+  padding: 0 13px 13px;
+  border-top: 1px solid #e0ebf0;
+}
+
+.academic-map-locations-panel[hidden] {
+  display: none;
+}
+
+.academic-map-location-search {
+  position: relative;
+  display: block;
+  max-width: 360px;
+  margin: 13px 0 10px;
+}
+
+.academic-map-location-search i {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  color: #6f8794;
+  font-size: 17px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.academic-map-location-search input {
+  width: 100%;
+  min-height: 40px;
+  padding: 8px 34px 8px 38px;
+  border: 1px solid #cbdfe8;
+  border-radius: 10px;
+  color: var(--academic-map-navy);
+  background: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  outline: none;
+}
+
+.academic-map-location-search input:focus {
+  border-color: #72bfda;
+  box-shadow: 0 0 0 3px rgba(20, 157, 221, 0.12);
+}
+
+.academic-map-locations {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  min-width: 0;
+  max-height: 280px;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.academic-map-location {
+  min-width: 0;
+  padding: 10px 11px;
+  background: #fbfcfa;
+}
+
+.academic-map-location strong,
+.academic-map-location span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.academic-map-location.is-active {
+  border-color: #efc45f;
+  background: #fff9e9;
+}
+
+.academic-map-location:focus-visible {
+  border-color: #72bfda;
+  outline: 2px solid rgba(20, 157, 221, 0.32);
+  outline-offset: 2px;
+}
+
+@media (max-width: 767.98px) {
+  .academic-map-toolbar {
+    align-items: flex-start;
+  }
+
+  .academic-map-input-hint span {
+    display: none;
+  }
+
+  .academic-map-selection-card,
+  .academic-map-popup {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .academic-map-popup ul,
+  .academic-map-locations {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 575.98px) {
+  .academic-map-toolbar,
+  .academic-map-caption {
+    padding: 10px 12px;
+  }
+
+  .academic-map-legend {
+    gap: 7px 12px;
+    font-size: 9px;
+  }
+
+  .academic-map-canvas {
+    aspect-ratio: auto;
+    height: 220px !important;
+  }
+
+  .academic-map-stage {
+    width: 100%;
+    height: auto;
+  }
+
+  /* %%%%26.04.2026%%%%%%% keep the compact mobile map readable; tapped markers still show full tooltips */
+  .academic-map-canvas.has-city-labels .academic-map-marker:not(.academic-map-marker--cluster) .academic-map-city-label {
+    display: none;
+  }
+  /* %%%%26.04.2026%%%%%%% keep the compact mobile map readable; tapped markers still show full tooltips */
+
+  .academic-map-input-hint {
+    display: none;
+  }
+
+  .academic-map-controls {
+    top: 10px;
+    right: 10px;
+    grid-template-columns: repeat(3, 42px);
+  }
+
+  .academic-map-controls button {
+    width: 42px;
+    min-height: 42px;
+    border-right: 1px solid #d8e7ed;
+    border-bottom: 0;
+  }
+
+  .academic-map-controls button:last-child {
+    border-right: 0;
+  }
+
+  .academic-map-selection-card {
+    gap: 15px;
+    padding: 17px 15px;
+  }
+
+  .academic-map-popup-content {
+    padding-right: 0;
+  }
+
+  .academic-map-popup ul,
+  .academic-map-locations {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .academic-map-locations-heading {
+    padding: 13px 14px;
+  }
+
+  .academic-map-locations-heading p {
+    display: none;
+  }
+
+  .academic-map-locations-card.is-open {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    left: 10px;
+    z-index: 1200;
+    max-height: min(72vh, 610px);
+    border-radius: 18px;
+    box-shadow: 0 24px 70px rgba(6, 24, 44, 0.34);
+  }
+
+  .academic-map-locations-card.is-open .academic-map-locations-panel {
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+  }
+
+  .academic-map-location-search {
+    flex: 0 0 auto;
+    max-width: none;
+  }
+
+  .academic-map-locations {
+    min-height: 0;
+    max-height: calc(72vh - 145px);
+  }
+}
+
+/* %%%%26.04.2026%%%%%%% move mobile zoom controls below the map so they do not cover Irkutsk */
+@media (max-width: 767.98px) {
+  .academic-map-canvas {
+    margin-bottom: 62px;
+    overflow: visible;
+  }
+
+  .academic-map-controls {
+    top: calc(100% + 9px);
+    right: 12px;
+    left: auto;
+    grid-template-columns: repeat(3, 44px);
+  }
+
+  .academic-map-controls button {
+    width: 44px;
+    min-height: 44px;
+    border-right: 1px solid #d8e7ed;
+    border-bottom: 0;
+  }
+
+  .academic-map-controls button:last-child {
+    border-right: 0;
+  }
+}
+/* %%%%26.04.2026%%%%%%% move mobile zoom controls below the map so they do not cover Irkutsk */
+/* %%%%26.04.2026%%%%%%% cohesive clustered academic map presentation */
 /* %%%%26.04.2026%%%%%%% unified academic sidebar and map page */
 
 /* Keep the desktop navigation available until the mobile toggle becomes visible. */
