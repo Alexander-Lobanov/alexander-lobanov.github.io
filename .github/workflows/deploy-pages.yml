@@ -22,7 +22,9 @@ concurrency:
 jobs:
   build:
     if: github.event_name != 'push' || github.ref_name == github.event.repository.default_branch
-    runs-on: windows-latest
+    # %%%%26.04.2026%%%%%%% use a runner pool less frequently blocked by Google Scholar
+    runs-on: macos-latest
+    # %%%%26.04.2026%%%%%%% use a runner pool less frequently blocked by Google Scholar
 
     steps:
       - name: Checkout repository
