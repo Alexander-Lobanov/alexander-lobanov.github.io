@@ -42,6 +42,28 @@ function Get-ExistingSnapshotUpdatedAt {
   return $null
 }
 
+# %%%%26.04.2026%%%%%%% retain the previous co-author count if the primary page omits that section
+function Get-ExistingSnapshotMetric {
+  param(
+    [string]$Path,
+    [string]$MetricName
+  )
+
+  if (-not (Test-Path $Path)) {
+    return $null
+  }
+
+  $content = [IO.File]::ReadAllText($Path)
+  $escapedMetricName = [regex]::Escape($MetricName)
+  $match = [regex]::Match($content, '"' + $escapedMetricName + '"\s*:\s*(\d+)')
+  if ($match.Success) {
+    return [int]$match.Groups[1].Value
+  }
+
+  return $null
+}
+# %%%%26.04.2026%%%%%%% retain the previous co-author count if the primary page omits that section
+
 function Invoke-ScholarRequest {
   param([string]$Url)
 
@@ -90,9 +112,15 @@ try {
     throw "Could not parse publications from $profileUrl"
   }
 
-  $coauthorsUrl = "https://scholar.google.com/citations?view_op=list_colleagues&hl=$Language&json=&user=$ScholarUserId&pagesize=1000"
-  $coauthorsHtml = Invoke-ScholarRequest $coauthorsUrl
-  $coauthorCount = ([regex]::Matches($coauthorsHtml, '<div class="gsc_ucoar gs_scl"')).Count
+  # %%%%26.04.2026%%%%%%% reuse the primary profile response instead of making a block-prone second request
+  $coauthorCount = ([regex]::Matches($profileHtml, '<div class="gsc_rsb_a_desc"')).Count
+  if ($coauthorCount -le 0) {
+    $coauthorCount = Get-ExistingSnapshotMetric -Path $outputFile -MetricName "coauthors"
+    if ($null -eq $coauthorCount) {
+      $coauthorCount = 0
+    }
+  }
+  # %%%%26.04.2026%%%%%%% reuse the primary profile response instead of making a block-prone second request
 
   $stats = [ordered]@{
     updatedAt = (Get-Date).ToUniversalTime().ToString("o")
