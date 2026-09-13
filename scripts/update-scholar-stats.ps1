@@ -95,8 +95,41 @@ function Invoke-ScholarRequest {
 $syncIsOptional = $env:SCHOLAR_SYNC_OPTIONAL -eq "true"
 
 try {
-  $profileUrl = "https://scholar.google.com/citations?user=$ScholarUserId&hl=$Language&cstart=0&pagesize=1000"
-  $profileHtml = Invoke-ScholarRequest $profileUrl
+  # %%%%26.04.2026%%%%%%% retry the same public Scholar profile through official regional hosts
+  $profileHosts = @(
+    "scholar.google.com",
+    "scholar.google.co.uk",
+    "scholar.google.de"
+  )
+  $profileUrl = $null
+  $profileHtml = $null
+  $profileErrors = @()
+
+  foreach ($profileHost in $profileHosts) {
+    $candidateUrl = "https://$profileHost/citations?user=$ScholarUserId&hl=$Language&cstart=0&pagesize=1000"
+
+    try {
+      $candidateHtml = Invoke-ScholarRequest $candidateUrl
+      $candidateMetricCount = ([regex]::Matches($candidateHtml, '<td class="gsc_rsb_std">([^<]+)</td>')).Count
+      $candidatePublicationCount = ([regex]::Matches($candidateHtml, '<tr class="gsc_a_tr">')).Count
+
+      if ($candidateMetricCount -lt 6 -or $candidatePublicationCount -le 0) {
+        throw "Scholar response did not contain a complete public profile"
+      }
+
+      $profileUrl = $candidateUrl
+      $profileHtml = $candidateHtml
+      Write-Host "Scholar profile loaded from $profileHost"
+      break
+    } catch {
+      $profileErrors += "${profileHost}: $($_.Exception.Message)"
+    }
+  }
+
+  if (-not $profileHtml) {
+    throw "Could not load Scholar profile from official hosts. $($profileErrors -join '; ')"
+  }
+  # %%%%26.04.2026%%%%%%% retry the same public Scholar profile through official regional hosts
 
   $metricMatches = [regex]::Matches($profileHtml, '<td class="gsc_rsb_std">([^<]+)</td>')
   if ($metricMatches.Count -lt 6) {
