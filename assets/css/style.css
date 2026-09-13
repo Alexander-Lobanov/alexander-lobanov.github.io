@@ -2202,9 +2202,7 @@ section {
 
 .academic-map-layout {
   display: grid;
-  /* %%%%26.04.2026%%%%%%% give the geographic canvas its natural wide presentation */
-  grid-template-columns: minmax(0, 1fr);
-  /* %%%%26.04.2026%%%%%%% give the geographic canvas its natural wide presentation */
+  grid-template-columns: minmax(0, 1.75fr) minmax(270px, 0.75fr);
   gap: 20px;
   align-items: stretch;
 }
@@ -2224,52 +2222,19 @@ section {
 }
 
 .academic-map-canvas {
-  --academic-map-marker-scale: 1;
   position: relative;
   width: 100%;
-  height: clamp(440px, 44vw, 520px);
+  height: 570px;
   overflow: hidden;
   background:
     radial-gradient(circle at 35% 42%, rgba(20, 157, 221, 0.15), transparent 38%),
     #e8f2f5;
-  outline: none;
-  touch-action: pan-y;
-}
-
-/* %%%%26.04.2026%%%%%%% interactive map pan and zoom presentation */
-.academic-map-canvas:focus-visible {
-  box-shadow: inset 0 0 0 3px rgba(20, 157, 221, 0.42);
-}
-
-.academic-map-canvas.is-zoomed {
-  cursor: grab;
-}
-
-.academic-map-canvas.is-dragging {
-  cursor: grabbing;
-}
-
-.academic-map-stage {
-  position: absolute;
-  inset: 0;
-  transform: translate3d(0, 0, 0) scale(1);
-  transform-origin: 50% 50%;
-  transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: transform;
-}
-
-.academic-map-canvas.is-dragging .academic-map-stage {
-  transition: none;
 }
 
 .academic-map-backdrop {
-  position: absolute;
-  inset: 0;
-  display: block;
   width: 100%;
   height: 100%;
   object-fit: fill;
-  pointer-events: none;
   user-select: none;
 }
 
@@ -2278,61 +2243,7 @@ section {
   inset: 0;
 }
 
-.academic-map-controls {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  z-index: 12;
-  display: inline-grid;
-  grid-template-columns: 38px minmax(58px, auto) 38px;
-  overflow: hidden;
-  border: 1px solid rgba(143, 183, 199, 0.86);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 8px 22px rgba(23, 59, 108, 0.16);
-}
-
-.academic-map-controls button {
-  display: grid;
-  place-items: center;
-  min-height: 38px;
-  padding: 0;
-  border: 0;
-  border-right: 1px solid #d8e7ed;
-  color: #173b6c;
-  background: transparent;
-  font-size: 19px;
-  transition: color 0.18s ease, background 0.18s ease;
-}
-
-.academic-map-controls button:last-child {
-  border-right: 0;
-}
-
-.academic-map-controls button:hover,
-.academic-map-controls button:focus-visible {
-  color: #087fab;
-  background: #eaf7fb;
-  outline: none;
-}
-
-.academic-map-controls button:disabled {
-  color: #9babb4;
-  cursor: not-allowed;
-  background: #f4f7f8;
-}
-
-.academic-map-controls .academic-map-zoom-level {
-  padding: 0 9px;
-  font-family: "Poppins", sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-}
-/* %%%%26.04.2026%%%%%%% interactive map pan and zoom presentation */
-
 .academic-map-marker {
-  --academic-map-marker-active-scale: 1;
   position: absolute;
   display: grid;
   place-items: center;
@@ -2348,22 +2259,19 @@ section {
     0 0 0 5px rgba(20, 157, 221, 0.14);
   font-size: 10px;
   font-weight: 800;
-  transform:
-    translate(-50%, -50%)
-    scale(var(--academic-map-marker-scale))
-    scale(var(--academic-map-marker-active-scale));
+  transform: translate(-50%, -50%);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .academic-map-marker:hover,
 .academic-map-marker:focus-visible,
 .academic-map-marker.is-active {
-  --academic-map-marker-active-scale: 1.18;
   z-index: 3;
   outline: none;
   box-shadow:
     0 7px 17px rgba(23, 59, 108, 0.34),
     0 0 0 8px rgba(20, 157, 221, 0.2);
+  transform: translate(-50%, -50%) scale(1.18);
 }
 
 .academic-map-marker--online {
@@ -2440,7 +2348,7 @@ section {
 .academic-map-locations-card {
   display: flex;
   flex-direction: column;
-  max-height: none;
+  max-height: 570px;
 }
 
 .academic-map-locations-heading {
@@ -2477,10 +2385,6 @@ section {
 
 .academic-map-locations {
   display: grid;
-  /* %%%%26.04.2026%%%%%%% keep locations compact below the wider map */
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  max-height: 320px;
-  /* %%%%26.04.2026%%%%%%% keep locations compact below the wider map */
   gap: 8px;
   padding: 13px;
   overflow-y: auto;
@@ -2694,7 +2598,6 @@ section {
 
 @media (prefers-reduced-motion: reduce) {
   .sidebar-map-card,
-  .academic-map-stage,
   .academic-map-marker,
   .academic-map-location {
     transition: none;

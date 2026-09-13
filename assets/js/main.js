@@ -883,13 +883,6 @@
   const academicMapRoot = select('[data-academic-map]')
   if (academicMapRoot) {
     const mapCanvas = select('[data-academic-map-canvas]')
-    // %%%%26.04.2026%%%%%%% interactive academic map zoom controls
-    const mapStage = select('[data-academic-map-stage]')
-    const mapZoomIn = select('[data-academic-map-zoom-in]')
-    const mapZoomOut = select('[data-academic-map-zoom-out]')
-    const mapReset = select('[data-academic-map-reset]')
-    const mapZoomLevel = select('[data-academic-map-zoom-level]')
-    // %%%%26.04.2026%%%%%%% interactive academic map zoom controls
     const mapStatus = select('[data-academic-map-status]')
     const mapLocations = select('[data-academic-map-locations]')
     const mapLocationCount = select('[data-academic-map-location-count]')
@@ -934,154 +927,6 @@
     // %%%%26.04.2026%%%%%%% extend the academic map to new 2026 locations in East Asia
     let markerByCity = new Map()
     let activities = []
-
-    // %%%%26.04.2026%%%%%%% zoom, pan and selected-city focusing for overlapping markers
-    const mapMinZoom = 1
-    const mapMaxZoom = 4
-    const mapZoomStep = 0.4
-    let mapZoom = mapMinZoom
-    let mapPanX = 0
-    let mapPanY = 0
-    let mapDragState = null
-
-    const clampMapPan = () => {
-      const maxPanX = mapCanvas.clientWidth * (mapZoom - 1) / 2
-      const maxPanY = mapCanvas.clientHeight * (mapZoom - 1) / 2
-      mapPanX = Math.max(-maxPanX, Math.min(maxPanX, mapPanX))
-      mapPanY = Math.max(-maxPanY, Math.min(maxPanY, mapPanY))
-    }
-
-    const renderMapView = () => {
-      clampMapPan()
-      mapStage.style.transform = `translate3d(${mapPanX}px, ${mapPanY}px, 0) scale(${mapZoom})`
-      mapCanvas.style.setProperty('--academic-map-marker-scale', String(1 / mapZoom))
-      mapCanvas.classList.toggle('is-zoomed', mapZoom > mapMinZoom)
-      mapCanvas.dataset.mapZoom = String(mapZoom)
-      mapZoomLevel.textContent = `${Math.round(mapZoom * 100)}%`
-      mapReset.setAttribute('aria-label', `Reset map view (${Math.round(mapZoom * 100)}%)`)
-      mapZoomOut.disabled = mapZoom <= mapMinZoom
-      mapZoomIn.disabled = mapZoom >= mapMaxZoom
-    }
-
-    const setMapZoom = (nextZoom, focusPoint = null) => {
-      const previousZoom = mapZoom
-      const constrainedZoom = Math.max(mapMinZoom, Math.min(mapMaxZoom, nextZoom))
-
-      if (focusPoint && constrainedZoom !== previousZoom) {
-        const zoomRatio = constrainedZoom / previousZoom
-        const focusOffsetX = focusPoint.x - mapCanvas.clientWidth / 2
-        const focusOffsetY = focusPoint.y - mapCanvas.clientHeight / 2
-        mapPanX = focusOffsetX - (focusOffsetX - mapPanX) * zoomRatio
-        mapPanY = focusOffsetY - (focusOffsetY - mapPanY) * zoomRatio
-      }
-
-      mapZoom = constrainedZoom
-      if (mapZoom === mapMinZoom) {
-        mapPanX = 0
-        mapPanY = 0
-      }
-      renderMapView()
-    }
-
-    const resetMapView = () => {
-      mapZoom = mapMinZoom
-      mapPanX = 0
-      mapPanY = 0
-      renderMapView()
-    }
-
-    const focusMapOnMarker = (marker) => {
-      mapZoom = Math.max(mapZoom, 1.8)
-      const markerX = Number(marker.dataset.mapX) / 100
-      const markerY = Number(marker.dataset.mapY) / 100
-      mapPanX = -(markerX - 0.5) * mapCanvas.clientWidth * mapZoom
-      mapPanY = -(markerY - 0.5) * mapCanvas.clientHeight * mapZoom
-      renderMapView()
-    }
-
-    mapZoomIn.addEventListener('click', () => setMapZoom(mapZoom + mapZoomStep))
-    mapZoomOut.addEventListener('click', () => setMapZoom(mapZoom - mapZoomStep))
-    mapReset.addEventListener('click', resetMapView)
-
-    mapCanvas.addEventListener('wheel', (event) => {
-      if (event.target.closest('.academic-map-controls, .academic-map-popup-card')) return
-      event.preventDefault()
-      const canvasBounds = mapCanvas.getBoundingClientRect()
-      const focusPoint = {
-        x: event.clientX - canvasBounds.left,
-        y: event.clientY - canvasBounds.top
-      }
-      setMapZoom(mapZoom + (event.deltaY < 0 ? mapZoomStep : -mapZoomStep), focusPoint)
-    }, { passive: false })
-
-    mapCanvas.addEventListener('dblclick', (event) => {
-      if (event.target.closest('button, a')) return
-      event.preventDefault()
-      const canvasBounds = mapCanvas.getBoundingClientRect()
-      setMapZoom(mapZoom + mapZoomStep, {
-        x: event.clientX - canvasBounds.left,
-        y: event.clientY - canvasBounds.top
-      })
-    })
-
-    mapCanvas.addEventListener('pointerdown', (event) => {
-      if (event.button !== 0 || mapZoom <= mapMinZoom || event.target.closest('button, a')) return
-      mapDragState = {
-        pointerId: event.pointerId,
-        startX: event.clientX,
-        startY: event.clientY,
-        panX: mapPanX,
-        panY: mapPanY
-      }
-      mapCanvas.classList.add('is-dragging')
-      mapCanvas.setPointerCapture(event.pointerId)
-    })
-
-    mapCanvas.addEventListener('pointermove', (event) => {
-      if (!mapDragState || mapDragState.pointerId !== event.pointerId) return
-      mapPanX = mapDragState.panX + event.clientX - mapDragState.startX
-      mapPanY = mapDragState.panY + event.clientY - mapDragState.startY
-      renderMapView()
-    })
-
-    const finishMapDrag = (event) => {
-      if (!mapDragState || mapDragState.pointerId !== event.pointerId) return
-      if (mapCanvas.hasPointerCapture(event.pointerId)) {
-        mapCanvas.releasePointerCapture(event.pointerId)
-      }
-      mapDragState = null
-      mapCanvas.classList.remove('is-dragging')
-    }
-
-    mapCanvas.addEventListener('pointerup', finishMapDrag)
-    mapCanvas.addEventListener('pointercancel', finishMapDrag)
-
-    mapCanvas.addEventListener('keydown', (event) => {
-      if (event.target !== mapCanvas) return
-
-      if (event.key === '+' || event.key === '=') {
-        event.preventDefault()
-        setMapZoom(mapZoom + mapZoomStep)
-      } else if (event.key === '-') {
-        event.preventDefault()
-        setMapZoom(mapZoom - mapZoomStep)
-      } else if (event.key === '0') {
-        event.preventDefault()
-        resetMapView()
-      } else if (mapZoom > mapMinZoom && ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) {
-        event.preventDefault()
-        const panStep = event.shiftKey ? 70 : 32
-        if (event.key === 'ArrowLeft') mapPanX += panStep
-        if (event.key === 'ArrowRight') mapPanX -= panStep
-        if (event.key === 'ArrowUp') mapPanY += panStep
-        if (event.key === 'ArrowDown') mapPanY -= panStep
-        renderMapView()
-      }
-    })
-
-    window.addEventListener('resize', renderMapView)
-    renderMapView()
-    // %%%%26.04.2026%%%%%%% zoom, pan and selected-city focusing for overlapping markers
 
     const cleanLocation = (location) => location
       .replace(/,?\s*\(online\)/i, '')
@@ -1161,9 +1006,6 @@
         locationButton.addEventListener('click', () => {
           const marker = markerByCity.get(city)
           if (marker) {
-            // %%%%26.04.2026%%%%%%% reveal overlapping locations when selected from the list
-            focusMapOnMarker(marker)
-            // %%%%26.04.2026%%%%%%% reveal overlapping locations when selected from the list
             marker.focus({ preventScroll: true })
             marker.click()
             mapCanvas.scrollIntoView({
@@ -1221,10 +1063,6 @@
           : 'academic-map-marker academic-map-marker--online'
         marker.style.left = `${projectedX}%`
         marker.style.top = `${projectedY}%`
-        // %%%%26.04.2026%%%%%%% retain projected coordinates for selected-city focusing
-        marker.dataset.mapX = String(projectedX)
-        marker.dataset.mapY = String(projectedY)
-        // %%%%26.04.2026%%%%%%% retain projected coordinates for selected-city focusing
         marker.setAttribute('aria-label', `${city}: ${cityActivities.length} ${cityActivities.length === 1 ? 'entry' : 'entries'}`)
         markerCount.textContent = String(cityActivities.length)
         marker.append(markerCount)

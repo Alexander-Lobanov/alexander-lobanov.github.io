@@ -16,9 +16,7 @@
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <!-- %%%%26.04.2026%%%%%%% interactive map zoom styles -->
-  <link href="assets/css/style.css?v=20260913-map-zoom1" rel="stylesheet">
-  <!-- %%%%26.04.2026%%%%%%% interactive map zoom styles -->
+  <link href="assets/css/style.css?v=20260905-navigation-map5" rel="stylesheet">
 </head>
 
 <body class="academic-map-page">
@@ -128,24 +126,11 @@
 
         <div class="academic-map-layout">
           <div class="academic-map-canvas-card">
-            <div class="academic-map-canvas" data-academic-map-canvas tabindex="0" aria-label="Interactive map of academic activity. Use plus and minus to zoom, drag to move, and zero to reset.">
-              <!-- %%%%26.04.2026%%%%%%% zoomable map stage and controls -->
-              <div class="academic-map-stage" data-academic-map-stage>
-                <img src="assets/img/academic-map-region.svg?v=20260905-east-asia" class="academic-map-backdrop" width="1200" height="600" alt="" draggable="false">
-                <div class="academic-map-marker-layer" data-academic-map-marker-layer></div>
-              </div>
-              <div class="academic-map-controls" aria-label="Map zoom controls">
-                <button type="button" data-academic-map-zoom-out aria-label="Zoom out" title="Zoom out">
-                  <i class="bx bx-minus" aria-hidden="true"></i>
-                </button>
-                <button type="button" class="academic-map-zoom-level" data-academic-map-reset aria-label="Reset map view" title="Reset map view">
-                  <span data-academic-map-zoom-level aria-live="polite">100%</span>
-                </button>
-                <button type="button" data-academic-map-zoom-in aria-label="Zoom in" title="Zoom in">
-                  <i class="bx bx-plus" aria-hidden="true"></i>
-                </button>
-              </div>
-              <!-- %%%%26.04.2026%%%%%%% zoomable map stage and controls -->
+            <div class="academic-map-canvas" data-academic-map-canvas aria-label="Interactive map of academic activity">
+              <!-- %%%%26.04.2026%%%%%%% expanded Natural Earth map for 2026 East Asia locations -->
+              <img src="assets/img/academic-map-region.svg?v=20260905-east-asia" class="academic-map-backdrop" width="1200" height="600" alt="">
+              <!-- %%%%26.04.2026%%%%%%% expanded Natural Earth map for 2026 East Asia locations -->
+              <div class="academic-map-marker-layer" data-academic-map-marker-layer></div>
               <div class="academic-map-popup-card" data-academic-map-popup hidden>
                 <button type="button" class="academic-map-popup-close" data-academic-map-popup-close aria-label="Close location details">
                   <i class="bx bx-x" aria-hidden="true"></i>
@@ -661,9 +646,7 @@
 ]
   </script>
   <!-- %%%%26.04.2026%%%%%%% embedded Talks map data end -->
-  <!-- %%%%26.04.2026%%%%%%% interactive map zoom behavior -->
-  <script src="assets/js/main.js?v=20260913-map-zoom1"></script>
-  <!-- %%%%26.04.2026%%%%%%% interactive map zoom behavior -->
+  <script src="assets/js/main.js?v=20260905-navigation-map10"></script>
 </body>
 
 </html>
