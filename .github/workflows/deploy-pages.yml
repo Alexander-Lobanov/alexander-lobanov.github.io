@@ -22,9 +22,9 @@ concurrency:
 jobs:
   build:
     if: github.event_name != 'push' || github.ref_name == github.event.repository.default_branch
-    # %%%%26.04.2026%%%%%%% use a runner pool less frequently blocked by Google Scholar
-    runs-on: macos-latest
-    # %%%%26.04.2026%%%%%%% use a runner pool less frequently blocked by Google Scholar
+    # %%%%26.04.2026%%%%%%% Google translation fallback allows the standard Pages runner
+    runs-on: windows-latest
+    # %%%%26.04.2026%%%%%%% Google translation fallback allows the standard Pages runner
 
     steps:
       - name: Checkout repository

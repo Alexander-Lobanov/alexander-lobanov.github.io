@@ -1,7 +1,14 @@
 param(
   [string]$ScholarUserId = "D1ji84AAAAAJ",
   [string]$Language = "ru",
-  [string]$OutputPath = "assets/js/scholar-stats.js"
+  [string]$OutputPath = "assets/js/scholar-stats.js",
+  # %%%%26.04.2026%%%%%%% configurable official hosts make the fallback path testable
+  [string[]]$ProfileHosts = @(
+    "scholar.google.com",
+    "scholar.google.co.uk",
+    "scholar.google.de"
+  )
+  # %%%%26.04.2026%%%%%%% configurable official hosts make the fallback path testable
 )
 
 Set-StrictMode -Version Latest
@@ -96,16 +103,11 @@ $syncIsOptional = $env:SCHOLAR_SYNC_OPTIONAL -eq "true"
 
 try {
   # %%%%26.04.2026%%%%%%% retry the same public Scholar profile through official regional hosts
-  $profileHosts = @(
-    "scholar.google.com",
-    "scholar.google.co.uk",
-    "scholar.google.de"
-  )
   $profileUrl = $null
   $profileHtml = $null
   $profileErrors = @()
 
-  foreach ($profileHost in $profileHosts) {
+  foreach ($profileHost in $ProfileHosts) {
     $candidateUrl = "https://$profileHost/citations?user=$ScholarUserId&hl=$Language&cstart=0&pagesize=1000"
 
     try {
@@ -126,6 +128,28 @@ try {
     }
   }
 
+  # %%%%26.04.2026%%%%%%% use Google's translation proxy when Scholar blocks GitHub runner addresses
+  if (-not $profileHtml) {
+    $translateUrl = "https://scholar-google-com.translate.goog/citations?user=$ScholarUserId&hl=en&cstart=0&pagesize=1000&_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en"
+
+    try {
+      $candidateHtml = Invoke-ScholarRequest $translateUrl
+      $candidateMetricCount = ([regex]::Matches($candidateHtml, '<td class="gsc_rsb_std">([^<]+)</td>')).Count
+      $candidatePublicationCount = ([regex]::Matches($candidateHtml, '<tr class="gsc_a_tr">')).Count
+
+      if ($candidateMetricCount -lt 6 -or $candidatePublicationCount -le 0) {
+        throw "Translated Scholar response did not contain a complete public profile"
+      }
+
+      $profileUrl = $translateUrl
+      $profileHtml = $candidateHtml
+      Write-Host "Scholar profile loaded through Google's translation proxy"
+    } catch {
+      $profileErrors += "scholar-google-com.translate.goog: $($_.Exception.Message)"
+    }
+  }
+  # %%%%26.04.2026%%%%%%% use Google's translation proxy when Scholar blocks GitHub runner addresses
+
   if (-not $profileHtml) {
     throw "Could not load Scholar profile from official hosts. $($profileErrors -join '; ')"
   }
@@ -144,6 +168,15 @@ try {
   if ($publicationCount -le 0) {
     throw "Could not parse publications from $profileUrl"
   }
+
+  # %%%%26.04.2026%%%%%%% translation proxy may return only the first page of publications
+  if ($profileUrl -match 'translate\.goog') {
+    $existingPublicationCount = Get-ExistingSnapshotMetric -Path $outputFile -MetricName "publications"
+    if ($null -ne $existingPublicationCount -and $existingPublicationCount -gt $publicationCount) {
+      $publicationCount = $existingPublicationCount
+    }
+  }
+  # %%%%26.04.2026%%%%%%% translation proxy may return only the first page of publications
 
   # %%%%26.04.2026%%%%%%% reuse the primary profile response instead of making a block-prone second request
   $coauthorCount = ([regex]::Matches($profileHtml, '<div class="gsc_rsb_a_desc"')).Count
